@@ -118,6 +118,15 @@ header {
   a {
     color: white;
   }
+	.navbar.primary.sticky {
+		background: rgba(0, 0, 0, 0.5);
+		position: fixed;
+		top: 0;
+
+		ul {
+			border: none;
+		}
+	}
   .navbar.secondary {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -270,4 +279,33 @@ footer {
 			}
 		}
 	}
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+ body {
+	 outline: 2px solid green;
+ }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+	body {
+			outline: 2px solid red;
+	}
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+	body {
+		outline: 1px solid yellow;
+	}
+	.sm-nav {
+		display: block;
+	}
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
 }
