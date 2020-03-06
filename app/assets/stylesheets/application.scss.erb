@@ -103,13 +103,13 @@ hr {
 	margin: 2% 6%;
 }
 
-body {
-  margin: 0 5%;
-}
-
 .bg-image {
 	width: 100%;
 	height: auto;
+}
+
+.hidden {
+	display: none;
 }
 
 // navbar
@@ -119,7 +119,7 @@ header {
     color: white;
   }
 	.navbar.primary.sticky {
-		background: rgba(0, 0, 0, 0.5);
+		background: rgba(78, 94, 169, 0.6);
 		position: fixed;
 		top: 0;
 
@@ -178,6 +178,49 @@ header {
 	    width: 90%;
 			font-size: 1.25rem;
   	}
+	}
+}
+
+// small screen nav
+.sm-nav {
+	background: rgba(78, 94, 169, 0.6);
+
+	ul {
+		border-top: black;//rgb(75,91,163);
+		text-align: center;
+	}
+
+	a:first-of-type img, a:nth-of-type(2) img {
+		margin-left: 3%;
+	}
+
+	a:first-of-type img {
+		margin-bottom: 15px;
+		margin-top: 15px;
+		height: 45px;
+	}
+
+	a:nth-of-type(2) img {
+		margin-bottom: 18px;
+		margin-top: 18px;
+		height: 39px;
+	}
+
+	a:nth-of-type(3) {
+		font-family: 'Handlee', 'Roboto', sans-serif;
+		font-size: 1.25rem;
+		position: absolute;
+		top: 2rem;
+		right: 6.5rem;
+	}
+
+	a:nth-of-type(4) {
+		img {
+			position: absolute;
+			top: 5px;
+			right: 1.75rem;
+			height: 65px;
+		}
 	}
 }
 
@@ -281,27 +324,46 @@ footer {
 	}
 }
 
+@media (min-width: 0px) {
+	.lg-nav, .lg-nav + hr {
+		display: none;
+	}
+
+	.sm-nav {
+		outline: 1px solid red;
+	}
+}
+
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
- body {
-	 outline: 2px solid green;
- }
+	.sm-nav {
+		outline: 1px solid green;
+	}
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-	body {
-			outline: 2px solid red;
+	.sm-nav {
+		outline: 2px solid yellow;
 	}
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
 	body {
-		outline: 1px solid yellow;
+	  margin: 0 5%;
 	}
+
 	.sm-nav {
+		display: none;
+	}
+
+	.lg-nav, .lg-nav + hr {
 		display: block;
+	}
+
+	body {
+		outline: 1px solid yellow;
 	}
 }
 
