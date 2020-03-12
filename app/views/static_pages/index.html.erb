@@ -1,10 +1,17 @@
 <% content_for :title, "Home" %>
+
 <% content_for :stylesheet do %>
   <%= stylesheet_link_tag "home", media: "all" %>
 <% end %>
 
-<section>
-  <%= image_tag "940x387" %>
+<% content_for :javascripts do %>
+ <%= javascript_pack_tag "slider" %>
+<% end %>
+
+<section class="slider">
+  <%= image_tag "news_1" %>
+  <%= image_tag "news_2" %>
+  <%= image_tag "news_1" %>
 </section>
 
 <hr />
@@ -35,8 +42,6 @@
     <li><a href="#">Holistic Care</a><h3></li>
     <li><a href="#">Dental Care</a><h3</li>
     <li><a href="#">Minor Surgical Procedures</a></li>
-    <li><a href="#">Another Item</a></li>
-    <li><a href="#">Yet another item</a></li>
   </ul>
 </section>
 

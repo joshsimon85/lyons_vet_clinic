@@ -122,6 +122,7 @@ header {
 		background: rgba(78, 94, 169, 0.6);
 		position: fixed;
 		top: 0;
+		z-index: 2;
 
 		ul {
 			border: none;
@@ -184,9 +185,14 @@ header {
 // small screen nav
 .sm-nav {
 	background: rgba(78, 94, 169, 0.6);
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
 
 	ul {
-		border-top: black;//rgb(75,91,163);
+		border-top: 1px solid rgb(75,91,163);
+		display: none;
 		text-align: center;
 	}
 
@@ -234,6 +240,7 @@ footer {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 	}
+
 	section:first-of-type {
 		figure {
 			text-align: left;
@@ -257,9 +264,9 @@ footer {
 		margin-top: 2%;
 		width: 100%;
 		aside {
+			background-color: inherit;
 			padding-top: 0;
 			padding-left: 0;
-			background-color: inherit;
 			text-align: left;
 
 			h4 {
@@ -293,30 +300,30 @@ footer {
 				margin-top: 2.50rem;
 				li {
 					height: 75px;
-					background-size: 75px;
-					background-repeat: no-repeat;
-
+					width: 75px;
 					a {
+						background-size: 75px;
+						background-repeat: no-repeat;
 						display: inline-block;
-						height: 75px;
+						height: 100%;
 						text-indent: -10000px;
-						width: 75px;
+						width: 100%;
 					}
 				}
 
-				li:first-of-type {
+				li:first-of-type a {
 					background-image: url(<%= asset_path('facebook') %>);
 				}
 
-				li:nth-of-type(2) {
+				li:nth-of-type(2) a {
 					background-image: url(<%= asset_path('instagram') %>);
 				}
 
-				li:nth-of-type(3) {
+				li:nth-of-type(3) a {
 					background-image: url(<%= asset_path('petportal') %>);
 				}
 
-				li:last-of-type {
+				li:last-of-type a {
 					background-image: url(<%= asset_path('carecredit') %>);
 				}
 			}
@@ -325,26 +332,42 @@ footer {
 }
 
 @media (min-width: 0px) {
+	body {
+		padding-top: 5.0rem;
+	}
 	.lg-nav, .lg-nav + hr {
 		display: none;
 	}
-
-	.sm-nav {
-		outline: 1px solid red;
+	footer {
+		section {
+			grid-template-columns: 1fr;
+			figure {
+				display: none;
+			}
+		}
+		iframe {
+			display: none;
+		}
 	}
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-	.sm-nav {
-		outline: 1px solid green;
-	}
+
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-	.sm-nav {
-		outline: 2px solid yellow;
+	footer {
+		section {
+			grid-template-columns: repeat(2, 1fr);
+			figure {
+				display: inline-block;
+			}
+		}
+		aside {
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 }
 
@@ -352,6 +375,7 @@ footer {
 @media (min-width: 992px) {
 	body {
 	  margin: 0 5%;
+		padding-top: 0;
 	}
 
 	.sm-nav {
@@ -362,8 +386,10 @@ footer {
 		display: block;
 	}
 
-	body {
-		outline: 1px solid yellow;
+	footer {
+		iframe {
+			display: inline-block;
+		}
 	}
 }
 
