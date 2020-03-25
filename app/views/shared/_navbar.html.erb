@@ -1,6 +1,6 @@
 <header class='lg-nav'>
   <nav class="navbar secondary">
-    <h1><a href=#>Lyons Vetinary Clinic</a></h1>
+    <h1><%= link_to 'Lyons Vetinary Clinic', root_path %></h1>
     <ul>
       <li>
         <a href="#">303-823-6767</a></li>
@@ -18,7 +18,7 @@
         <a href="#">About Us</a>
       </li>
       <li>
-        <a href="#">Services</a>
+        <%= link_to 'Services', services_path %>
       </li>
       <li>
         <a href="#">Online Pharmacy</a>
