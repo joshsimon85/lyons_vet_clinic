@@ -236,23 +236,53 @@ footer {
 	margin-right: 6%;
 	margin-left: 6%;
 
-	section {
+	ul {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(4, 1fr);
+		justify-items: center;
+		margin-top: 2.50rem;
+		li {
+			height: 55px; // 75
+			width: 55px;
+			a {
+				background-size: 55px;
+				background-repeat: no-repeat;
+				display: inline-block;
+				height: 100%;
+				text-indent: -10000px;
+				width: 100%;
+			}
+		}
+
+		li:first-of-type a {
+			background-image: url(<%= asset_path('facebook.jpeg') %>);
+		}
+
+		li:nth-of-type(2) a {
+			background-image: url(<%= asset_path('instagram.jpeg') %>);
+		}
+
+		li:nth-of-type(3) a {
+			background-image: url(<%= asset_path('petportal.jpeg') %>);
+		}
+
+		li:last-of-type a {
+			background-image: url(<%= asset_path('carecredit.jpeg') %>);
+		}
 	}
 
 	section:first-of-type {
 		figure {
-			text-align: left;
+			margin: 0 auto;
+			width: 80%;
 		}
 		img {
 			display: inline-block;
-			text-align: left;
-			width: 80%;
+			width: 100%;
+
 		}
 		aside {
 			border: 1px solid black;
-
 			h3 {
 				text-align: left;
 				padding-left: 1rem;
@@ -262,16 +292,18 @@ footer {
 	}
 	section:nth-of-type(2) {
 		margin-top: 2%;
-		width: 100%;
+		text-align: center;
 		aside {
 			background-color: inherit;
+			display: inline-block;
+			margin-bottom: 5%;
 			padding-top: 0;
 			padding-left: 0;
 			text-align: left;
-
 			h4 {
 				margin-bottom: .75rem;
 				margin-top: 2rem;
+				text-align: center;
 			}
 
 			dl {
@@ -293,40 +325,6 @@ footer {
 					color: black;
 				}
 			}
-
-			ul {
-				display: grid;
-				grid-template-columns: repeat(4, 1fr);
-				margin-top: 2.50rem;
-				li {
-					height: 75px;
-					width: 75px;
-					a {
-						background-size: 75px;
-						background-repeat: no-repeat;
-						display: inline-block;
-						height: 100%;
-						text-indent: -10000px;
-						width: 100%;
-					}
-				}
-
-				li:first-of-type a {
-					background-image: url(<%= asset_path('facebook.jpeg') %>);
-				}
-
-				li:nth-of-type(2) a {
-					background-image: url(<%= asset_path('instagram.jpeg') %>);
-				}
-
-				li:nth-of-type(3) a {
-					background-image: url(<%= asset_path('petportal.jpeg') %>);
-				}
-
-				li:last-of-type a {
-					background-image: url(<%= asset_path('carecredit.jpeg') %>);
-				}
-			}
 		}
 	}
 }
@@ -338,17 +336,6 @@ footer {
 	.lg-nav, .lg-nav + hr {
 		display: none;
 	}
-	footer {
-		section {
-			grid-template-columns: 1fr;
-			figure {
-				display: none;
-			}
-		}
-		iframe {
-			display: none;
-		}
-	}
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -359,14 +346,41 @@ footer {
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
 	footer {
-		section {
+		position: relative;
+		z-index: -1;
+		section:first-of-type {
+			display: grid;
 			grid-template-columns: repeat(2, 1fr);
+
 			figure {
-				display: inline-block;
+				margin: 0;
 			}
 		}
-		aside {
+
+		section:nth-of-type(2) {
+			display: grid;
 			grid-template-columns: repeat(2, 1fr);
+			aside {
+				margin-bottom: 0;
+				h4 {
+					text-align: left;
+				}
+			}
+		}
+
+		ul {
+			justify-items: start;
+			bottom: 0;
+			width: 23.5rem;
+			position: absolute;
+			z-index: 1;
+			li {
+				height: 65px;
+				width: 65px;
+				a {
+					background-size: 65px;
+				}
+			}
 		}
 	}
 }
@@ -384,12 +398,6 @@ footer {
 
 	.lg-nav, .lg-nav + hr {
 		display: block;
-	}
-
-	footer {
-		iframe {
-			display: inline-block;
-		}
 	}
 }
 

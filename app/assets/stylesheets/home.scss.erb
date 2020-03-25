@@ -1,105 +1,112 @@
-section:first-of-type img {
-  display: inline-block;
-  width: 100%;
-}
-
-section:nth-of-type(2) {
-  text-align: center;
-}
-
-section:nth-of-type(2) img {
-  display: inline-block;
-  width: 100%;
-}
-
-section:nth-of-type(2) img:nth-of-type(1n+2) {
-  display: none;
-}
-
-section:nth-of-type(3) {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 0 auto;
-  width: 80%;
-  img {
+main {
+  section:first-of-type img {
     display: inline-block;
+    width: 100%;
   }
-  aside {
-    background: #EEF6E6;
-    display: inline-block;
+
+  section:nth-of-type(2) {
     text-align: center;
-    padding: 60px 10px 0px 10px;
-
-    h3 {
-      margin-bottom: 25px;
-    }
   }
-  figure {
+
+  section:nth-of-type(2) img {
+    display: inline-block;
+    width: 100%;
+  }
+
+  section:nth-of-type(2) img:nth-of-type(1n+2) {
+    display: none;
+  }
+
+  section:nth-of-type(3) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto;
+    width: 80%;
     img {
       display: inline-block;
-      width: 100%;
     }
-  }
-}
-
-section:nth-of-type(4) {
-  margin: 0 auto;
-  max-width: 58rem;
-  ul {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    justify-content: center;
-
-    li {
-      height: 5rem;
-      background-image: url(<%= asset_path('logo.png') %>);
-      background-size: auto 100%;
-      background-position: center;
-      background-repeat: no-repeat;
+    aside {
+      background: #EEF6E6;
+      display: inline-block;
       text-align: center;
-      margin-bottom: 1rem;
+      padding: 60px 10px 0px 10px;
 
-      a {
-        color: black;
-        font-size: 1.25rem;
-        position: relative;
-        top: 2rem;
+      h3 {
+        margin-bottom: 25px;
       }
     }
+    figure {
+      img {
+        display: inline-block;
+        width: 100%;
+      }
+    }
+  }
 
-    li:last-of-type {
-      margin-bottom: 0;
+  section:nth-of-type(4) {
+    margin: 0 auto;
+    max-width: 58rem;
+    ul {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      justify-content: center;
+
+      li {
+        height: 5rem;
+        background-image: url(<%= asset_path('logo.png') %>);
+        background-size: auto 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        text-align: center;
+        margin-bottom: 1rem;
+
+        a {
+          color: black;
+          font-size: 1.25rem;
+          position: relative;
+          top: 2rem;
+        }
+      }
+
+      li:last-of-type {
+        margin-bottom: 0;
+      }
     }
   }
 }
 
 @media (min-width: 0px) {
-  section:nth-of-type(3) {
-    grid-template-columns: 1fr;
-    aside {
-      padding-bottom: 1rem;
-      padding-top: 1rem;
-    }
-    figure {
-      margin: 0 auto;
-      width: 70%;
+  main {
+    section:nth-of-type(3) {
+      grid-template-columns: 1fr;
+      aside {
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+      }
+      figure {
+        margin: 0 auto;
+        width: 70%;
+      }
     }
   }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-  section:nth-of-type(4) {
-    ul {
-      grid-template-columns: repeat(4, 1fr);
+  main {
+    section:nth-of-type(4) {
+      ul {
+        grid-template-columns: repeat(4, 1fr);
 
-      li {
-        height: 125px;
-        margin-bottom: 0;
+        li {
+          height: 125px;
+          margin-bottom: 0;
+        }
       }
     }
   }
 }
+
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
@@ -108,18 +115,20 @@ section:nth-of-type(4) {
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-  section:first-of-type {
-    display: none;
-  }
-
-  section:nth-of-type(3) {
-    grid-template-columns: repeat(2, 1fr);
-    aside {
-      padding: 60px 10px 0px 10px;
+  main {
+    section:first-of-type {
+      display: none;
     }
-    figure {
-      margin: 0;
-      width: 100%;
+
+    section:nth-of-type(3) {
+      grid-template-columns: repeat(2, 1fr);
+      aside {
+        padding: 60px 10px 0px 10px;
+      }
+      figure {
+        margin: 0;
+        width: 100%;
+      }
     }
   }
 }
