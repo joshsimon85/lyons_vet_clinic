@@ -3,7 +3,7 @@ class Mocks::MockController < ApplicationController
     render layout: false
   end
 
-  def index
-  
-  end
+  def index; end
+
+  def services; end 
 end

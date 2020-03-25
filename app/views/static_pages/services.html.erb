@@ -1,0 +1,40 @@
+<% content_for :title, "Services" %>
+
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "services", media: "all" %>
+<% end %>
+
+<% content_for :header_image do %>
+  <%= image_tag "dog_at_vet.jpg", class: "bg-image" %>
+  <h2>Services We Provide</h2>
+<% end %>
+
+<main>
+  <section>
+    <h2>Services We Provide</h2>
+    <%= image_tag 'dog_at_vet.jpeg', alt: 'dog at a vet office' %>
+  </section>
+  <section>
+    <div>
+      <p>
+        We provide numerous services for both dogs and cats, including wellness
+        visits, vaccinations, dental care, general surgery (including spays and
+        neuters), holistic medicine, acupuncture, laser therapy, pet hospice,
+        nutritional counseling and self grooming services.
+      </p>
+      <p>
+        Our clinic also features an on-site pharmacy, in-house laboratory,
+        radiology, retail shop and self grooming services. We service the greater
+        Lyons area including but not limited to Pinewood Springs, Hygiene,
+        Longmont, Boulder and Estes Park.
+      </p>
+    </div>
+  </section>
+  <section>
+    <ul>
+      <li>
+        <%= image_tag 'dog_chasing_ball.jpg', alt: 'dog chasing a ball' %>
+      </li>
+    </ul>
+  </section>
+</main>

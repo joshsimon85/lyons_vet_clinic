@@ -76,6 +76,9 @@ main {
 }
 
 @media (min-width: 0px) {
+  header + hr {
+    display: none;
+  }
   main {
     section:nth-of-type(3) {
       grid-template-columns: 1fr;
@@ -115,6 +118,9 @@ main {
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
+  header + hr {
+    display: block;
+  }
   main {
     section:first-of-type {
       display: none;
