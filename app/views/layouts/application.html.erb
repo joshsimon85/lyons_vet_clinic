@@ -8,12 +8,12 @@
 
     <title>Lyons Vet Clinic | <%= yield :title %></title>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= yield :stylesheet %>
 
     <link href="https://fonts.googleapis.com/css?family=Handlee&display=swap" rel="stylesheet">
 
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
     <%= javascript_pack_tag 'throttle' %>
     <%= javascript_pack_tag 'nav' %>
     <%= yield :javascripts %>

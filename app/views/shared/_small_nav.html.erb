@@ -2,8 +2,10 @@
   <nav>
     <a class="hamburger_menu" href="#"><%= image_tag "hamburger_menu" %></a>
     <a class="close hidden" href="#"><%= image_tag "close" %></a>
-    <a href="#">Lyons Vetinary Clinic</a>
-    <a href="#"><%= image_tag "light_logo" %></a>
+    <%= link_to 'Lyons Vetinary Clinic', root_path %>
+    <%= link_to root_path do %>
+      <%= image_tag "light_logo" %>
+    <% end %>
     <ul>
       <li><a href="#">item</a></li>
       <li><a href="#">item</a></li>

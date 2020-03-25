@@ -10,7 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
-  *= require_tree .
+
   *= require_self
  */
 
@@ -79,6 +79,7 @@ html {
 // global
 body {
 	position: relative;
+	z-index: 0;
 }
 
 a {
@@ -177,7 +178,7 @@ header {
 			border-bottom: 3px solid white;
 			border-top: 3px solid white;
 	    display: grid;
-	    grid-template-columns: repeat(6, 1fr);
+	    grid-template-columns: repeat(7, 1fr);
 	    margin: 0 auto;
 	    text-align: center;
 			padding: 1rem 0;
@@ -246,8 +247,10 @@ footer {
 		grid-template-columns: repeat(4, 1fr);
 		justify-items: center;
 		margin-top: 2.50rem;
+		pointer-events: all;
+		z-index: 1000;
 		li {
-			height: 55px; // 75
+			height: 55px;
 			width: 55px;
 			a {
 				background-size: 55px;
@@ -284,7 +287,6 @@ footer {
 		img {
 			display: inline-block;
 			width: 100%;
-
 		}
 		aside {
 			border: 1px solid black;
@@ -378,7 +380,7 @@ footer {
 			bottom: 0;
 			width: 23.5rem;
 			position: absolute;
-			z-index: 1;
+			z-index: 1000;
 			li {
 				height: 65px;
 				width: 65px;
