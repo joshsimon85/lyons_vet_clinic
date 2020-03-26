@@ -1,0 +1,51 @@
+.active {
+  display: grid;
+  font-size: 1.5rem;
+  font-weight: bold;
+  grid-template-columns: 13% 87%;
+}
+
+aside:first-of-type .active span {
+  display: inline-block;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  margin: 1.75rem 3rem;
+  aside:first-of-type {
+    background: rgba(149,158,203,0.9);
+    width: 80%;
+    ul {
+      padding: 1rem;
+      li {
+        align-items: center;
+        margin-bottom: 1.75rem;
+        a {
+          background: transparent;
+          color: #fff;
+          font-size: 1.4rem;
+        }
+        span {
+          display: none;
+          height: 25px;
+          margin-right: .1rem;
+          width: 25px;
+          img {
+            display: inline-block;
+            width: 25px;
+          }
+        }
+      }
+    }
+  }
+  aside:nth-of-type(2) {
+    img {
+      display: inline-block;
+      width: 100%;
+    }
+    img + img {
+      display: none;
+    }
+  }
+}

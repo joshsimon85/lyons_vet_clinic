@@ -1,0 +1,45 @@
+<% content_for :title, "Paw Sources" %>
+
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "paw_sources", media: "all" %>
+<% end %>
+
+<% content_for :javascripts do %>
+  <%= javascript_pack_tag "blog_nav" %>
+<% end %>
+
+<% content_for :header_image do %>
+  <%= image_tag "dog_paws.jpg", class: "bg-image" %>
+  <h2>Resources For Pet Parents</h2>
+<% end %>
+
+<main>
+  <aside>
+    <nav>
+      <ul id="paw_source_nav">
+        <li data-id="1" class="active">
+          <span><%= image_tag 'logo.png' %></span>
+          <a href="#">Allergies</a>
+        </li>
+        <li data-id="2">
+          <span><%= image_tag 'logo.png' %></span>
+          <a href="#">Canine Dental Care</a>
+        </li>
+        <li data-id="3">
+          <span><%= image_tag 'logo.png' %></span>
+          <a href="#">Ear Cleaning</a>
+        </li>
+        <li data-id="4">
+          <span><%= image_tag 'logo.png' %></span>
+          <a href="#">Extra Long Sentence that takes up muli lines</a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <aside class="article">
+    <img data-id="1" src="https://place-hold.it/1200x900/666" alt="">
+    <img data-id="2" src="https://place-hold.it/1200x900/333" alt="">
+    <img data-id="3" src="https://place-hold.it/1200x900/888" alt="">
+    <img data-id="4" src="https://place-hold.it/1200x900/777" alt="">
+  </aside>
+</main>
