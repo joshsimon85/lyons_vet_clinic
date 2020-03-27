@@ -1,0 +1,32 @@
+<% content_for :title, "Contact Us" %>
+
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "contact_us", media: "all" %>
+<% end %>
+
+<% content_for :header_image do %>
+  <%= image_tag "dog_barking.jpeg", class: "bg-image" %>
+  <h2>Contact Us</h2>
+<% end %>
+
+<main>
+  <section>
+    <h2>Contact Us</h2>
+    <%= image_tag 'dog_barking.jpeg', alt: 'dog barking' %>
+  </section>
+  <section>
+    <form class="" action="index.html" method="post">
+      <dl>
+        <dt><label for="full_name">Full Name <span>*</span></label></dt>
+        <dd><input id="full_name" type="text" name="full_name" value=""></dd>
+        <dt><label for="email">Email Address <span>*</span></label></dt>
+        <dd><input id="email" type="email" name="email" value=""></dd>
+      </dl>
+      <dl>
+        <dt><label for="body">Comments/Questions <span>*</span></label></dt>
+        <dd><textarea id="body" name="body" rows="15" cols="80"></textarea></dd>
+      </dl>
+      <button type="submit" name="submit">Submit</button>
+    </form>
+  </section>
+</main>
