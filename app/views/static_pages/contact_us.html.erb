@@ -9,22 +9,29 @@
   <h2>Contact Us</h2>
 <% end %>
 
+<% content_for :javascripts do %>
+  <%= javascript_pack_tag "form_validations" %>
+<% end %>
+
 <main>
   <section>
     <h2>Contact Us</h2>
     <%= image_tag 'dog_barking.jpeg', alt: 'dog barking' %>
   </section>
   <section>
-    <form class="" action="index.html" method="post">
+    <form action="index.html" method="post" novalidate>
       <dl>
         <dt><label for="full_name">Full Name <span>*</span></label></dt>
-        <dd><input id="full_name" type="text" name="full_name" value=""></dd>
+        <dt class="hidden"><label class="error_message" for="full_name">Full Name is required <span>*</span></label></dt>
+        <dd><input id="full_name" type="text" name="full_name" value="" required></dd>
         <dt><label for="email">Email Address <span>*</span></label></dt>
-        <dd><input id="email" type="email" name="email" value=""></dd>
+        <dt class="hidden"><label class="error_message" for="email">Properly formatted Email Address is required <span>*</span></label></dt>
+        <dd><input id="email" type="email" name="email" value="" required></dd>
       </dl>
       <dl>
         <dt><label for="body">Comments/Questions <span>*</span></label></dt>
-        <dd><textarea id="body" name="body" rows="10" cols="80"></textarea></dd>
+        <dt class="hidden"><label class="error_message" for="body">Comments/Questions is required<span>*</span></label></dt>
+        <dd><textarea id="body" name="body" rows="10" cols="80" required></textarea></dd>
       </dl>
       <button type="submit" name="submit">Submit</button>
     </form>
