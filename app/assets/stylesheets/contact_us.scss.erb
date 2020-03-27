@@ -41,14 +41,15 @@ main {
         }
         dd {
           input:focus, textarea:focus {
-            outline: 2px solid #4E5EA9;
+            border: 2px solid #4E5EA9;
+            outline: none;
           }
           input {
             background: #fff;
             font-size: 1rem;
             height: 2.5rem;
             padding: 0 .5rem;
-            width: 50%;
+            width: 100%;
           }
         }
         textarea {
@@ -82,10 +83,41 @@ main {
     section:first-of-type {
       display: none;
     }
+    section:nth-of-type(2) {
+      form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        position: relative;
+        dl {
+          dt, dd {
+            margin-bottom: 1rem;
+          }
+          dd {
+            input {
+              width: 85%;
+            }
+          }
+        }
+        button[type="submit"] {
+          position: absolute;
+          top: 78%;
+        }
+      }
+    }
   }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-
+  main {
+    form {
+      dl {
+        dd {
+          input {
+            width: 55%;
+          }
+        }
+      }
+    }
+  }
 }
