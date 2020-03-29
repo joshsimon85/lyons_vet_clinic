@@ -1,3 +1,10 @@
+header {
+  background: url(<%= asset_url('dog_at_vet.jpg') %>)
+    center center / 100% auto
+    no-repeat
+    content-box;
+}
+
 main {
   h2 {
     background: transparent;
@@ -9,6 +16,8 @@ main {
     width: 50%;
   }
   section:nth-of-type(1) {
+    max-height: 75vh;
+    overflow: hidden;
     position: relative;
     z-index: -1;
     img {

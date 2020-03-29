@@ -1,4 +1,18 @@
+header {
+  background: url(<%= asset_url('store_front.jpg') %>)
+    top center / 100% auto
+    no-repeat
+    content-box;
+}
+
 main {
+  section:first-of-type {
+    max-height: 75vh;
+    overflow: hidden;
+    position: relative;
+    z-index: -1;
+  }
+
   section:first-of-type img {
     display: inline-block;
     width: 100%;
