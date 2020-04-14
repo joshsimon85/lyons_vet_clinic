@@ -6,16 +6,19 @@ header {
 }
 
 main {
-  section:first-of-type {
-    max-height: 75vh;
-    overflow: hidden;
-    position: relative;
-    z-index: -1;
+  h2 {
+    background: transparent;
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 35%;
+    left: 25%;
+    width: 50%;
   }
-
-  section:first-of-type img {
-    display: inline-block;
-    width: 100%;
+  
+  section:first-of-type {
+    background-image: url(<%= asset_path('store_front.jpeg') %>);
+    background-position: 28%;
   }
 
   section:nth-of-type(2) {
