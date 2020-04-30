@@ -3,9 +3,9 @@
     <h1><%= link_to 'Lyons Vetinary Clinic', root_path %></h1>
     <ul>
       <li>
-        <a href="#">303-823-6767</a></li>
+        <%= link_to '303-823-6767', 'tel:3038236767', class: 'text-shadow' %>
       <li>
-        <%= link_to 'https://connect.allydvm.com/pet/lyons/sign_in', :target => '_blank' do %>
+        <%= link_to 'https://connect.allydvm.com/pet/lyons/sign_in', :target => '_blank', class: 'text-shadow' do %>
           Schedule an <br/> Appointment
         <% end %>
       </li>
