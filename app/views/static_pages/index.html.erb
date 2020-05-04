@@ -8,6 +8,14 @@
  <%= javascript_pack_tag "slider" %>
 <% end %>
 
+<% content_for :javascript_initializers do %>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+      const mainSlider = new Slider(document.querySelector('.slider')).init();
+    });
+  </script>
+<% end %>
+
 <hr/>
 
 <main>
@@ -16,9 +24,22 @@
   </section>
 
   <section class="slider">
-    <%= image_tag "news_1.jpeg" %>
-    <%= image_tag "news_2.jpeg" %>
-    <%= image_tag "news_1.jpeg" %>
+    <%= image_tag "news_1.jpeg", :class => 'active', :data => { :id => '1', :type => 'slider' } %>
+    <%= image_tag "news_2.jpeg", :data => { :id => '2', :type => 'slider' } %>
+    <div class="actions">
+      <%= link_to nil, :data => { :id =>'prev' } do %>
+        <%= image_tag "chevron-left.png" %>
+      <% end %>
+      <%= link_to nil, :class => 'active', :data => { :toggle => '1' } do %>
+        &#8226;
+      <% end %>
+      <%= link_to nil, :data => { :toggle => '2' } do %>
+        &#8226;
+      <% end %>
+      <%= link_to nil, :data => { :id =>'next' } do %>
+        <%= image_tag "chevron-right.png" %>
+      <% end %>
+    </div>
   </section>
 
   <hr />
@@ -45,10 +66,12 @@
 
   <section>
     <ul>
-      <li><a href="#">Preventative Care</a></h3></li>
-      <li><a href="#">Holistic Care</a><h3></li>
-      <li><a href="#">Dental Care</a><h3</li>
-      <li><a href="#">Minor Surgical Procedures</a></li>
+      <li><h3><a href="#">Preventative Care</a></h3></li>
+      <li><h3><a href="#">Holistic Care</a></h3></li>
+      <li><h3><a href="#">Dental Care</a></h3></li>
+      <li><h3><a href="#">Minor Surgical Procedures</a></h3></li>
+      <li><h3><a href="#">More</a></h3></li>
+      <li><h3><a href="#">More 2</a></h3></li>
     </ul>
   </section>
 
