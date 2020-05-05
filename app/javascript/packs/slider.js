@@ -147,4 +147,4 @@ class Slider {
   }
 }
 
-window.Slider = Slider;
+export { Slider };

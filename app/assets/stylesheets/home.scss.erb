@@ -24,7 +24,11 @@ main {
 
   .slider {
     position: relative;
+    pointer-events: all;
+    z-index: 0;
     .actions {
+      z-index: 1;
+      pointer-events: all;
       a {
         color: #cccccc;
         font-size: 30px;

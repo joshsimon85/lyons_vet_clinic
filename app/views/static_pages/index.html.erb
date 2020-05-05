@@ -6,14 +6,7 @@
 
 <% content_for :javascripts do %>
  <%= javascript_pack_tag "slider" %>
-<% end %>
-
-<% content_for :javascript_initializers do %>
-  <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", () => {
-      const mainSlider = new Slider(document.querySelector('.slider')).init();
-    });
-  </script>
+ <%= javascript_pack_tag "main_slider" %>
 <% end %>
 
 <hr/>

@@ -1,3 +1,5 @@
+import { throttle } from './throttle';
+
 document.addEventListener('DOMContentLoaded', () => {
   const navBar = {
     setNavBarHeight: function() {
