@@ -23,12 +23,7 @@ main {
   }
 
   .slider {
-    position: relative;
-    pointer-events: all;
-    z-index: 0;
     .actions {
-      z-index: 1;
-      pointer-events: all;
       a {
         color: #cccccc;
         font-size: 30px;
@@ -175,6 +170,10 @@ main {
     display: block;
   }
   main {
+    .slider {
+      position: relative;
+    }
+    
     [data-id="prev"], [data-id="next"] {
       display: inline-block;
     }

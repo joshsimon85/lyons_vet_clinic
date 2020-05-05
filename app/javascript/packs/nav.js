@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let bounding;
 
       this.nav = document.querySelector('.lg-nav').querySelector('.navbar.primary');
-      bounding = this.nav.getBoundingClientRect();
-      this.navStartTopHeight = window.pageYOffset + bounding.top;
+      this.navStartTopHeight = window.pageYOffset + 176;
     },
     checkScrollHeight: function(args) {
       if (this.navStartTopHeight >= args) {
