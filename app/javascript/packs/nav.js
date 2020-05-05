@@ -1,4 +1,5 @@
 import { throttle } from './throttle';
+import $ from 'jquery';
 
 document.addEventListener('DOMContentLoaded', () => {
   const navBar = {
