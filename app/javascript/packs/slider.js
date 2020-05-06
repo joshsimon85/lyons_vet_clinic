@@ -122,6 +122,8 @@ class Slider {
     let id = e.target.getAttribute('data-toggle');
     let slideInfo = this.findSlideInfo();
     let slide;
+    let idx;
+    let actionBubbles;
 
     if (this.sliderID) { this.stopTimedSlide(); }
 
@@ -129,11 +131,10 @@ class Slider {
       return el.getAttribute('data-id') === id;
     })[0];
 
-    this.removeActiveClassFromSlide(slideInfo.activeSlide);
-    this.addActiveClassToSlide(slide);
+    actionBubbles = this.actions.querySelectorAll('[data-toggle]');
+    idx = String(Array.prototype.slice.call(actionBubbles).indexOf(e.target));
 
-    this.actions.querySelector('.active').classList.toggle('active', false);
-    e.target.classList.toggle('active', true);
+    this.animateSlides(slideInfo.activeSlide, slide, idx);
   }
 
   bindEvents() {
@@ -146,10 +147,8 @@ class Slider {
   }
 
   startSlider() {
-    let self = this;
-
-    this.sliderID= setInterval(function() {
-      self.toggleNextSlide();
+    this.sliderID= setInterval(() => {
+      this.toggleNextSlide();
     }, 6000);
   }
 
