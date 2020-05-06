@@ -19,7 +19,7 @@
 
   <section class="slider">
     <%= image_tag "news_1.jpeg", :class => 'active', :data => { :id => '1', :type => 'slider' } %>
-    <%= image_tag "news_2.jpeg", :data => { :id => '2', :type => 'slider' } %>
+    <%= image_tag "news_2.jpeg", :style => 'display: none;', :data => { :id => '2', :type => 'slider' } %>
     <div class="actions">
       <%= link_to nil, :data => { :id =>'prev' } do %>
         <%= image_tag "chevron-left.png" %>

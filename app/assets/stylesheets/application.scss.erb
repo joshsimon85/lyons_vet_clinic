@@ -237,6 +237,16 @@ main {
 	top: 0;
 	right: 0;
 	left: 0;
+	.hamburger_menu, .close {
+		display: inline-block;
+		margin-left: 3%;
+		img {
+			display: inline-block;
+		}
+	}
+	.close.hidden, .hamburger_menu.hidden {
+		display: none;
+	}
 	ul {
 		border-top: 2px solid rgb(75,91,163);
 		display: none;
@@ -245,26 +255,19 @@ main {
 		li {
 			font-size: 1.25rem;
 			padding: .4rem 0;
-			a {
-				//padding: .1rem 0;
-			}
 		}
 	}
 
 	a:first-of-type img, a:nth-of-type(2) img {
-		margin-left: 3%;
-	}
-
-	a:first-of-type img {
-		margin-bottom: 15px;
-		margin-top: 15px;
-		height: 45px;
+		margin-bottom: 20px;
+		margin-top: 20px;
+		height: 35px;
 	}
 
 	a:nth-of-type(2) img {
-		margin-bottom: 18px;
-		margin-top: 18px;
-		height: 39px;
+		margin-bottom: 21px;
+		margin-top: 21px;
+		height: 33px;
 	}
 
 	a:nth-of-type(3) {

@@ -51,8 +51,14 @@ class Slider {
   }
 
   animateSlides(currentSlide, targetSlide) {
-    this.removeActiveClassFromSlide(currentSlide);
-    this.addActiveClassToSlide(targetSlide);
+    let self = this;
+
+    $(currentSlide).finish().fadeOut(500, () => {
+      self.removeActiveClassFromSlide(currentSlide);
+      $(targetSlide).finish().fadeIn(500, () => {
+        self.addActiveClassToSlide(targetSlide);
+      });
+    });
   }
 
   togglePrevSlide(e) {
