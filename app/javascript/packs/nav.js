@@ -4,10 +4,8 @@ import $ from 'jquery';
 document.addEventListener('DOMContentLoaded', () => {
   const navBar = {
     setNavBarHeight: function() {
-      let bounding;
-
       this.nav = document.querySelector('.lg-nav').querySelector('.navbar.primary');
-      this.navStartTopHeight = window.pageYOffset + 176;
+      this.navStartTopHeight = 176;
     },
     checkScrollHeight: function(args) {
       if (this.navStartTopHeight >= args) {

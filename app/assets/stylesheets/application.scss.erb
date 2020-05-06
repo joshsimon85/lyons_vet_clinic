@@ -112,6 +112,7 @@ hr {
 .box-shadow {
 	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
 }
+
 .text-shadow {
 	text-shadow: 4px 4px 4px black;
 }
@@ -140,6 +141,9 @@ header {
   a {
     color: white;
   }
+	.active {
+		border-bottom: 1px solid white;
+	}
 	.navbar.primary.sticky {
 		background: rgba(78, 94, 169, 0.8);
 		position: fixed;
@@ -206,6 +210,9 @@ header {
 			padding: 1rem 0;
 	    width: 90%;
 			font-size: 1.25rem;
+			a {
+				padding: .2rem 0;
+			}
   	}
 	}
 }
@@ -218,6 +225,7 @@ main {
     height: 50vh;
     overflow: hidden;
     position: relative;
+		top: -2px;
     z-index: -1;
   }
 }
@@ -229,14 +237,17 @@ main {
 	top: 0;
 	right: 0;
 	left: 0;
-
 	ul {
-		border-top: 1px solid rgb(75,91,163);
+		border-top: 2px solid rgb(75,91,163);
 		display: none;
 		text-align: center;
+		padding: .4rem 0;
 		li {
 			font-size: 1.25rem;
-			padding: .2rem 0;
+			padding: .4rem 0;
+			a {
+				//padding: .1rem 0;
+			}
 		}
 	}
 

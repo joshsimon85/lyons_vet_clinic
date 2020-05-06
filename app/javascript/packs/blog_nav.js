@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 document.addEventListener('DOMContentLoaded', function() {
   const nav = {
     nav: document.querySelector('#paw_source_nav'),

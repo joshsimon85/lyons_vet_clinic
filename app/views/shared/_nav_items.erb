@@ -1,0 +1,47 @@
+<ul>
+  <li>
+    <% if active == 'home' %>
+      <%= link_to 'Home', root_path, :class => 'active' %>
+    <% else %>
+      <%= link_to 'Home', root_path %>
+    <% end %>
+  </li>
+  <li>
+    <% if active == 'about' %>
+      <%= link_to 'About Us', about_us_path, :class => 'active' %>
+    <% else %>
+      <%= link_to 'About Us', about_us_path %>
+    <% end %>
+  </li>
+  <li>
+    <% if active == 'services' %>
+      <%= link_to 'Services', services_path, :class => 'active' %>
+    <% else %>
+      <%= link_to 'Services', services_path %>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to 'Online Pharmacy', 'https://lyonsvetclinic.vetsfirstchoice.com', :target => '_blank' %>
+  </li>
+  <li>
+    <% if active == 'paw sources' %>
+      <%= link_to 'Paw-Sources', paw_sources_path, :class => 'active' %>
+    <% else %>
+      <%= link_to 'Paw-Sources', paw_sources_path %>
+    <% end %>
+  </li>
+  <li>
+    <% if active == 'uvh' %>
+      <a class="active" href="#">UVH</a>
+    <% else %>
+      <a href="#">UVH</a>
+    <% end %>
+  </li>
+  <li>
+    <% if active == 'contact us' %>
+      <%= link_to 'Contact Us', contact_us_path, :class => 'active' %>
+    <% else %>
+      <%= link_to 'Contact Us', contact_us_path %>
+    <% end %>
+  </li>
+</ul>

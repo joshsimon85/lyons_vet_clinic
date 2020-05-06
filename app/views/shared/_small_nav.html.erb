@@ -6,25 +6,6 @@
     <%= link_to root_path do %>
       <%= image_tag "light_logo" %>
     <% end %>
-    <ul>
-      <li>
-        <%= link_to 'Home', root_path %>
-      </li>
-      <li>
-        <%= link_to 'About Us', about_us_path %>
-      </li>
-      <li>
-        <%= link_to 'Services', services_path %>
-      </li>
-      <li>
-        <%= link_to 'Online Pharmacy', 'https://lyonsvetclinic.vetsfirstchoice.com', :target => '_blank' %>
-      </li>
-      <li>
-        <%= link_to 'Paw-Sources', paw_sources_path %>
-      </li>
-      <li>
-        <%= link_to 'Contact Us', contact_us_path %>
-      </li>
-    </ul>
+    <%= render partial: 'shared/nav_items', locals: { :active => active } %>
   </nav>
 </header>
