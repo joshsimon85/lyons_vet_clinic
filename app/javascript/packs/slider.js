@@ -147,14 +147,14 @@ class Slider {
   }
 
   startSlider() {
-    this.sliderID= setInterval(() => {
+    this.sliderID = setInterval(() => {
       this.toggleNextSlide();
     }, 6000);
   }
 
-  init() {
+  init(autoPlay) {
     this.bindEvents();
-    this.startSlider();
+    if (autoPlay) { this.startSlider(); }
     return this;
   }
 }

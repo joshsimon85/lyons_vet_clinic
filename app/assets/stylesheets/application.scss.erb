@@ -292,6 +292,27 @@ main {
 footer {
 	background-color: #727DBA;
 	padding: 1.5rem;
+	[data-id="prev"], [data-id="next"] {
+		background: transparent;
+		display: inline-block;
+		height: 30px;
+		width: 30px;
+		position: absolute;
+		top: 40%;
+	}
+	[data-id="prev"] {
+		left: -2%;
+	}
+	[data-id="next"] {
+		right: -2%;
+	}
+	[data-toggle] {
+		color: #4F4F4F;
+		font-size: 20px;
+	}
+	[data-toggle].active {
+		color: #cccccc;
+	}
 	ul {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
@@ -341,11 +362,15 @@ footer {
 			width: 100%;
 		}
 		aside {
-			border: 1px solid black;
+			padding: 0 2rem;
+			position: relative;
 			h3 {
-				text-align: left;
-				padding-left: 1rem;
-				padding-top: 1rem;
+				text-align: center;
+				padding: .75rem 0;
+			}
+			.actions {
+				padding-top: .5rem;
+				text-align: center;
 			}
 		}
 	}

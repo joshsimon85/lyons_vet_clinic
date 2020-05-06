@@ -3,8 +3,30 @@
     <figure>
       <%= image_tag "dogs", alt: "Dogs kissing" %>
     </figure>
-    <aside>
+    <aside class="slider">
       <h3>What our clients are saying</h3>
+        <div class="active" data-id='1' data-type="slider">
+          review 1 Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsum
+          Lorem ipsumLorem ipsum Lorem ipsum
+        </div>
+        <div data-id='2' data-type="slider" style="display:none;">
+          review 2 Lorem ipsum Lorem ipsumLorem ipsum Lorem ipsumLorem ipsum
+          Lorem ipsumLorem ipsum Lorem ipsum
+        </div>
+        <div class="actions">
+          <%= link_to nil, :data => { :id =>'prev' } do %>
+            <%= image_tag "chevron-left.png" %>
+          <% end %>
+          <%= link_to nil, :class => 'active', :data => { :toggle => '1' } do %>
+            &#8226;
+          <% end %>
+          <%= link_to nil, :data => { :toggle => '2' } do %>
+            &#8226;
+          <% end %>
+          <%= link_to nil, :data => { :id =>'next' } do %>
+            <%= image_tag "chevron-right.png" %>
+          <% end %>
+        </div>
     </aside>
   </section>
   <section>
