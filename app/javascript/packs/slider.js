@@ -50,13 +50,12 @@ class Slider {
     this.sliderID = null;
   }
 
-  animateSlides(currentSlide, targetSlide) {
-    let self = this;
-
+  animateSlides(currentSlide, targetSlide, idx) {
     $(currentSlide).finish().fadeOut(500, () => {
-      self.removeActiveClassFromSlide(currentSlide);
+      this.removeActiveClassFromSlide(currentSlide);
+      this.changeBubbleState(idx);
       $(targetSlide).finish().fadeIn(500, () => {
-        self.addActiveClassToSlide(targetSlide);
+        this.addActiveClassToSlide(targetSlide);
       });
     });
   }
@@ -79,8 +78,11 @@ class Slider {
       targetSlideIdx = slideInfo.activeSlideIdx - 1;
     }
 
-    this.animateSlides(slideInfo.activeSlide, slideInfo.slides[targetSlideIdx]);
-    this.changeBubbleState(targetSlideIdx);
+    this.animateSlides(
+      slideInfo.activeSlide,
+      slideInfo.slides[targetSlideIdx],
+      targetSlideIdx
+    );
   }
 
   toggleNextSlide(e) {
@@ -101,8 +103,11 @@ class Slider {
       targetSlideIdx = slideInfo.activeSlideIdx + 1;
     }
 
-    this.animateSlides(slideInfo.activeSlide, slideInfo.slides[targetSlideIdx]);
-    this.changeBubbleState(targetSlideIdx);
+    this.animateSlides(
+      slideInfo.activeSlide,
+      slideInfo.slides[targetSlideIdx],
+      targetSlideIdx
+    );
   }
 
   createSlideList() {
