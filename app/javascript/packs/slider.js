@@ -6,6 +6,7 @@ class Slider {
     this.actions = container.querySelector('.actions');
     this.prev = this.actions.querySelector('[data-id="prev"]');
     this.next = this.actions.querySelector('[data-id="next"]');
+    this.duration = 500;
   }
 
   getActiveSlide(slides) {
@@ -51,10 +52,10 @@ class Slider {
   }
 
   animateSlides(currentSlide, targetSlide, idx) {
-    $(currentSlide).finish().fadeOut(500, () => {
+    $(currentSlide).finish().fadeOut(this.duration, () => {
       this.removeActiveClassFromSlide(currentSlide);
       this.changeBubbleState(idx);
-      $(targetSlide).finish().fadeIn(500, () => {
+      $(targetSlide).finish().fadeIn(this.duration, () => {
         this.addActiveClassToSlide(targetSlide);
       });
     });
@@ -146,15 +147,15 @@ class Slider {
     }, this);
   }
 
-  startSlider() {
+  startSlider(duration) {
     this.sliderID = setInterval(() => {
       this.toggleNextSlide();
-    }, 6000);
+    }, duration);
   }
 
-  init(autoPlay) {
+  init(autoPlay = false, duration = 6000) {
     this.bindEvents();
-    if (autoPlay) { this.startSlider(); }
+    if (autoPlay) { this.startSlider(duration); }
     return this;
   }
 }

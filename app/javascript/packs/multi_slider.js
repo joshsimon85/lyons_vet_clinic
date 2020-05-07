@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 class MultiSlider {
   constructor(container) {
     this.container = container;
@@ -45,8 +43,8 @@ class MultiSlider {
 
   init(autoPlay=false, duration = 6000) {
     this.bindEvents();
-    debugger;
     if (autoPlay) { this.startAutoSlide(duration); }
+
     return this;
   }
 }
