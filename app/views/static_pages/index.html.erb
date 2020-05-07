@@ -5,7 +5,8 @@
 <% end %>
 
 <% content_for :javascripts do %>
- <%= javascript_pack_tag "news_slider" %>
+  <%= javascript_pack_tag "news_slider" %>
+  <%= javascript_pack_tag "care_links_slider" %>
 <% end %>
 
 <% content_for :active, 'home' %>
@@ -58,24 +59,22 @@
 
   <hr />
 
-  <section>
-    <ul class="slider">
-      <li><h3><a href="#">Preventative Care</a></h3></li>
-      <li><h3><a href="#">Holistic Care</a></h3></li>
-      <li><h3><a href="#">Dental Care</a></h3></li>
-      <li><h3><a href="#">Minor Surgical Procedures</a></h3></li>
-      <li><h3><a href="#">More</a></h3></li>
-      <li><h3><a href="#">More 2</a></h3></li>
+  <section data-id="multi_slider">
+    <ul data-id="slides">
+      <li data-toggle="slide"><h3><a href="#">Preventative Care</a></h3></li>
+      <li data-toggle="slide"><h3><a href="#">Holistic Care</a></h3></li>
+      <li data-toggle="slide"><h3><a href="#">Dental Care</a></h3></li>
+      <li data-toggle="slide"><h3><a href="#">Minor Surgical Procedures</a></h3></li>
+      <li data-toggle="slide"><h3><a href="#">More</a></h3></li>
+      <li data-toggle="slide"><h3><a href="#">More 2</a></h3></li>
     </ul>
     <div class="actions">
         <%= link_to nil, :data => { :id =>'prev' } do %>
           <%= image_tag "chevron-left.png" %>
         <% end %>
-
         <%= link_to nil, :data => { :id =>'next' } do %>
           <%= image_tag "chevron-right.png" %>
         <% end %>
-      
     </div>
   </section>
 
