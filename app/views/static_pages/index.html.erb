@@ -59,7 +59,7 @@
   <hr />
 
   <section>
-    <ul>
+    <ul class="slider">
       <li><h3><a href="#">Preventative Care</a></h3></li>
       <li><h3><a href="#">Holistic Care</a></h3></li>
       <li><h3><a href="#">Dental Care</a></h3></li>
@@ -67,6 +67,16 @@
       <li><h3><a href="#">More</a></h3></li>
       <li><h3><a href="#">More 2</a></h3></li>
     </ul>
+    <div class="actions">
+        <%= link_to nil, :data => { :id =>'prev' } do %>
+          <%= image_tag "chevron-left.png" %>
+        <% end %>
+
+        <%= link_to nil, :data => { :id =>'next' } do %>
+          <%= image_tag "chevron-right.png" %>
+        <% end %>
+      
+    </div>
   </section>
 
   <hr />
