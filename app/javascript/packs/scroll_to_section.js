@@ -3,8 +3,6 @@ import $ from 'jquery';
 class ScrollToSection {
   constructor(permitted) {
     this.permitted = permitted;
-    this.offset = 50;
-    this.duration = 1500;
   }
 
   getQueryParams() {
@@ -36,7 +34,9 @@ class ScrollToSection {
     }
   }
 
-  init() {
+  init(offset = 50, duration = 1500) {
+    this.offset = offset;
+    this.duration = duration;
     this.autoScroll();
   }
 }
