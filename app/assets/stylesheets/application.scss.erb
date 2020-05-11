@@ -298,6 +298,7 @@ footer {
 		width: 30px;
 		position: absolute;
 		top: 40%;
+		z-index: 1;
 	}
 	[data-id="prev"] {
 		left: -2%;
@@ -317,8 +318,6 @@ footer {
 		grid-template-columns: repeat(4, 1fr);
 		justify-items: center;
 		margin-top: 2.50rem;
-		pointer-events: all;
-		z-index: 1000;
 		li {
 			height: 55px;
 			width: 55px;
@@ -433,7 +432,6 @@ footer {
 	footer {
 		padding: 3rem;
 		position: relative;
-		z-index: -1;
 		section:first-of-type {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
