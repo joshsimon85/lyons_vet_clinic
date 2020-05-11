@@ -1,7 +1,7 @@
 <% content_for :title, "Home" %>
 
 <% content_for :stylesheet do %>
-  <%= stylesheet_link_tag "home", media: "all" %>
+  <%= stylesheet_link_tag "index", media: "all" %>
 <% end %>
 
 <% content_for :javascripts do %>
@@ -19,6 +19,7 @@
   </section>
 
   <section class="slider">
+    <h3>Clinic News</h3>
     <%= image_tag "news_1.jpeg", :class => 'active', :data => { :id => '1', :type => 'slider' } %>
     <%= image_tag "news_2.jpeg", :style => 'display: none;', :data => { :id => '2', :type => 'slider' } %>
     <div class="actions">
@@ -60,6 +61,7 @@
   <hr />
 
   <section data-id="multi_slider">
+    <h3>Services</h3>
     <ul data-id="slides">
       <li data-toggle="slide">
         <h3>
