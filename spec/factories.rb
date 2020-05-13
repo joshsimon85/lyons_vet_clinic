@@ -8,8 +8,14 @@ FactoryBot.define do
     full_name { Faker::Name.name }
     description { Faker::Lorem.paragraph(:sentence_count => 5) }
     email { Faker::Internet.email }
-    password { Faker::Lorem.word }
+    password { Faker::Lorem.characters(:number => 6) }
     confirmed_at { Time.now }
-    role_id { Faker::Number.number(:digits => 1) }
+    role_id { nil }
+    position_id { nil }
+  end
+
+  factory :position do
+    title { Faker::Lorem.word }
+    description { Faker::Lorem.paragraph(:sentence_count => 5) }
   end
 end
