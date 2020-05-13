@@ -1,9 +1,9 @@
 class PositionIdValidator < ActiveModel::Validator
-  attr_reader :privileged_users, :record
+  attr_reader :privileged_users
 
-  def initialize(record)
+  def initialize(options={})
+    super
     @privileged_users = ['power user', 'admin']
-    @record = record
   end
 
   def validate(record)
