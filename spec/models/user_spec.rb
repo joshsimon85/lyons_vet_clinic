@@ -20,50 +20,68 @@ RSpec.describe User do
     end
   end
 
-  describe 'user belongs to a position' do
+  describe 'user and position relationships' do
     context 'user role is admin' do
       let(:role) { create(:role, :name => 'admin') }
       let(:position) { create(:position) }
       let!(:admin) { create(:user, :role => role, :position => position) }
 
-      it 'has belongs to relationship with position' do
+      it 'does not require a position id' do
         expect(User.first.position_id).to eq(position.id)
       end
     end
 
-    context 'user role is power user' do
-      let(:role) { create(:role, :name => 'power user') }
-      let(:position) { create(:position) }
-      let!(:admin) { create(:user, :role => role, :position => position) }
-
-
-      it 'has belongs to relationship with position' do
-        expect(User.first.position_id).to eq(position.id)
-      end
-    end
-
-    context 'user role is power user case insensitve' do
-      let(:role) { create(:role, :name => 'Power usEr') }
-      let(:position) { create(:position) }
-      let!(:admin) { create(:user, :role => role, :position => position) }
-
-      it 'has belongs to relationship with position' do
-        expect(User.first.position_id).to eq(position.id)
-      end
-    end
-
-    context 'user role is power user and position_id is nil' do
-      let(:role) { create(:role, :name => 'power user') }
+    context 'user role is admin and position_id is nil' do
+      let(:role) { create(:role, :name => 'admin') }
       let!(:admin) { build(:user, :role => role) }
 
-      it 'does not pass validations' do
+      it 'does not require a position id' do
         expect(admin.valid?).to eq(false)
         expect(User.count).to eq(0)
       end
     end
 
+    context 'user role is employee' do
+      let(:role) { create(:role, :name => 'employee') }
+      let(:position) { create(:position) }
+      let!(:employee) { create(:user, :role => role, :position => position) }
+
+      it 'has belongs to relationship with position' do
+        expect(User.first.position_id).to eq(position.id)
+      end
+    end
+
+    context 'user role is employee and position_id is nil' do
+      let(:role) { create(:role, :name => 'eMployeE') }
+      let!(:employee) { build(:user, :role => role) }
+
+      it 'does not pass validations' do
+        expect(employee.valid?).to be(false)
+        expect(User.count).to be(0)
+      end
+    end
+
+    context 'user role is employee and role is case insensitive' do
+      let(:role) { create(:role, :name => 'eMployeE') }
+      let!(:employee) { build(:user, :role => role) }
+
+      it 'does not pass validations' do
+        expect(employee.valid?).to be(false)
+        expect(User.count).to be(0)
+      end
+    end
+
     context 'user role in not admin' do
       let(:role) { create(:role, :name => 'user') }
+      let!(:jane) { create(:user, :role => role) }
+
+      it 'does not have belongs to relationship with position' do
+        expect(User.first.position_id).to eq(nil)
+      end
+    end
+
+    context 'user is a power user' do
+      let(:role) { create(:role, :name => 'power user') }
       let!(:jane) { create(:user, :role => role) }
 
       it 'does not have belongs to relationship with position' do
