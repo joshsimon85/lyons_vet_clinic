@@ -2,6 +2,7 @@ FactoryBot.define do
   factory :role do
     name { Faker::Lorem.word }
     description { Faker::Lorem.paragraph(:sentence_count => 5) }
+    deletable { true }
   end
 
   factory :user do
