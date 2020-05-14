@@ -9,3 +9,5 @@ power_user = Role.create(:name => 'power user', :description => 'External user w
 admin = Role.create(:name => 'admin', :description => 'Internal employee with admin privileges')
 employee = Role.create(:name => 'employee', :description => 'Internal employee')
 user = Role.create(:name => 'user', :description => 'External customer')
+
+power_user = User.create(:full_name => 'Josh Simon', :description => '')

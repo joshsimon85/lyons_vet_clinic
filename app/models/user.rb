@@ -6,7 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, :confirmable, :lockable
 
-  validates :full_name, :email, :password, :description, :presence => true
+  validates :full_name, :email, :password, :presence => true
   validates_with PositionIdValidator
+  validates_with DescriptionValidator
   validates :email, :uniqueness => { :case_sensitive => false }
 end

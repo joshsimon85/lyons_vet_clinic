@@ -7,10 +7,9 @@ RSpec.describe User do
   it { should validate_presence_of(:full_name) }
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:password) }
-  it { should validate_presence_of(:description) }
   it { should validate_uniqueness_of(:email).case_insensitive }
 
-  describe 'user belongs to a role' do
+  describe 'users belongs to a role' do
     it 'has a role id assigned' do
       role =  create(:role, :name => 'admin')
       position =  create(:position)
@@ -20,72 +19,106 @@ RSpec.describe User do
     end
   end
 
-  describe 'user and position relationships' do
-    context 'user role is admin' do
+  describe 'employees and admins' do
+    context 'role is admin' do
       let(:role) { create(:role, :name => 'admin') }
       let(:position) { create(:position) }
       let!(:admin) { create(:user, :role => role, :position => position) }
 
-      it 'does not require a position id' do
+      it 'requires a position id to be valid' do
+        expect(User.count).to eq(1)
         expect(User.first.position_id).to eq(position.id)
       end
-    end
 
-    context 'user role is admin and position_id is nil' do
-      let(:role) { create(:role, :name => 'admin') }
-      let!(:admin) { build(:user, :role => role) }
-
-      it 'does not require a position id' do
-        expect(admin.valid?).to eq(false)
-        expect(User.count).to eq(0)
+      it 'requires a description' do
+        expect(User.first.description).to be_present
       end
     end
 
-    context 'user role is employee' do
+    context 'role is admin and position_id is nil' do
+      let(:role) { create(:role, :name => 'admin') }
+
+      it 'raises an error and does not create the record' do
+        expect{ create(:user, :role => role) }
+          .to raise_error(ActiveRecord::RecordInvalid)
+      end
+    end
+
+    context 'role is admin and descripton is nil' do
+      let(:role) { create(:role, :name => 'admin') }
+      let(:position) { create(:position) }
+
+      it 'raises an error and does not create the record' do
+        expect{ create(:user, { :role => role,
+                                :position => position,
+                                :description => nil }) }
+          .to raise_error(ActiveRecord::RecordInvalid)
+      end
+    end
+
+    context 'role is employee' do
       let(:role) { create(:role, :name => 'employee') }
       let(:position) { create(:position) }
       let!(:employee) { create(:user, :role => role, :position => position) }
 
-      it 'has belongs to relationship with position' do
+      it 'has belongs to a position' do
         expect(User.first.position_id).to eq(position.id)
       end
     end
 
-    context 'user role is employee and position_id is nil' do
-      let(:role) { create(:role, :name => 'eMployeE') }
-      let!(:employee) { build(:user, :role => role) }
+    context 'role is employee and description is nil' do
+      let(:role) { create(:role, :name => 'employee') }
+      let(:position) { create(:position) }
 
-      it 'does not pass validations' do
-        expect(employee.valid?).to be(false)
-        expect(User.count).to be(0)
+      it 'raises an exception and does not create the record' do
+        expect{ create(:user, { :role => role,
+                                :position => position,
+                                :description => nil }) }
+          .to raise_error(ActiveRecord::RecordInvalid)
       end
     end
 
-    context 'user role is employee and role is case insensitive' do
+    context 'role is employee and position_id is nil' do
       let(:role) { create(:role, :name => 'eMployeE') }
-      let!(:employee) { build(:user, :role => role) }
 
-      it 'does not pass validations' do
-        expect(employee.valid?).to be(false)
-        expect(User.count).to be(0)
+      it 'raises an exception and does not create the record' do
+        expect{ create(:user, { :role => role }) }
+          .to raise_error(ActiveRecord::RecordInvalid)
       end
     end
 
-    context 'user role in not admin' do
+    context 'role is employee or admin case insensitive' do
+        it 'creates the record when role is AdMin' do
+          role = create(:role, :name => 'AdMin')
+          position = create(:position)
+          admin = create(:user, { :role => role, :position => position })
+
+          expect(User.count).to eq(1)
+          expect(User.first.full_name).to eq(admin.full_name)
+        end
+
+        it 'creates the record when role is emPloyEE' do
+          role = create(:role, :name => 'emPloyEE')
+          position = create(:position)
+          admin = create(:user, { :role => role, :position => position })
+
+          expect(User.count).to eq(1)
+          expect(User.first.full_name).to eq(admin.full_name)
+        end
+    end
+  end
+
+  describe 'users other than admin and employees' do
+    context 'role is user' do
       let(:role) { create(:role, :name => 'user') }
-      let!(:jane) { create(:user, :role => role) }
+      let!(:jane) { create(:user, { :role => role, :description => nil }) }
 
       it 'does not have belongs to relationship with position' do
-        expect(User.first.position_id).to eq(nil)
+        expect(User.first.position_id).not_to be_present
       end
-    end
 
-    context 'user is a power user' do
-      let(:role) { create(:role, :name => 'power user') }
-      let!(:jane) { create(:user, :role => role) }
-
-      it 'does not have belongs to relationship with position' do
-        expect(User.first.position_id).to eq(nil)
+      it 'does not require a description' do
+        expect(User.first.description).not_to be_present
       end
     end
   end
