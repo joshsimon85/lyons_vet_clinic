@@ -122,4 +122,114 @@ RSpec.describe User do
       end
     end
   end
+
+  describe '#admin?' do
+    it 'returns true when the user is an admin' do
+      role = create(:role, :name => 'admin')
+      position = create(:position)
+      jon = create(:user, { :role => role, :position => position })
+
+      expect(jon.admin?).to eq(true)
+    end
+
+    it 'returns true when the user is an admin case insensitive' do
+      role = create(:role, :name => 'aDMin')
+      position = create(:position)
+      jon = create(:user, { :role => role, :position => position })
+
+      expect(jon.admin?).to eq(true)
+    end
+
+    it 'returns false when the user is a power user' do
+      role = create(:role, :name => 'power user')
+      position = create(:position)
+      jon = create(:user, { :role => role, :position => position })
+
+      expect(jon.admin?).to eq(false)
+    end
+
+    it 'returns false when the user is role name is user' do
+      role = create(:role, :name => 'user')
+      position = create(:position)
+      jon = create(:user, { :role => role, :position => position })
+
+      expect(jon.admin?).to eq(false)
+    end
+  end
+
+  describe '#power_user?' do
+    it 'returns true when the user is an power user' do
+      role = create(:role, :name => 'power user')
+      position = create(:position)
+      jon = create(:user, { :role => role, :position => position })
+
+      expect(jon.power_user?).to eq(true)
+    end
+
+    it 'returns true when the user is a power user case insensitive' do
+      role = create(:role, :name => 'powEr UseR')
+      position = create(:position)
+      jon = create(:user, { :role => role, :position => position })
+
+      expect(jon.power_user?).to eq(true)
+    end
+
+    it 'returns false when the user is an admin' do
+      role = create(:role, :name => 'admin')
+      position = create(:position)
+      jon = create(:user, { :role => role, :position => position })
+
+      expect(jon.power_user?).to eq(false)
+    end
+
+    it 'returns false when the user is role name is user' do
+      role = create(:role, :name => 'user')
+      position = create(:position)
+      jon = create(:user, { :role => role, :position => position })
+
+      expect(jon.power_user?).to eq(false)
+    end
+  end
+
+  describe '#privileged_user?' do
+    it 'returns false when the user is role name is user' do
+      role = create(:role, :name => 'user')
+      position = create(:position)
+      jon = create(:user, { :role => role, :position => position })
+
+      expect(jon.privileged_user?).to eq(false)
+    end
+
+    it 'returns true when the user is an admin' do
+      role = create(:role, :name => 'admin')
+      position = create(:position)
+      jon = create(:user, { :role => role, :position => position })
+
+      expect(jon.privileged_user?).to eq(true)
+    end
+
+    it 'returns true when the user is an power user' do
+      role = create(:role, :name => 'power user')
+      position = create(:position)
+      jon = create(:user, { :role => role, :position => position })
+
+      expect(jon.privileged_user?).to eq(true)
+    end
+
+    it 'returns true when the user is an admin case insensitive' do
+      role = create(:role, :name => 'aDMin')
+      position = create(:position)
+      jon = create(:user, { :role => role, :position => position })
+
+      expect(jon.privileged_user?).to eq(true)
+    end
+
+    it 'returns true when the user is a power user case insensitive' do
+      role = create(:role, :name => 'powEr UseR')
+      position = create(:position)
+      jon = create(:user, { :role => role, :position => position })
+
+      expect(jon.privileged_user?).to eq(true)
+    end
+  end
 end

@@ -10,4 +10,16 @@ class User < ApplicationRecord
   validates_with PositionIdValidator
   validates_with DescriptionValidator
   validates :email, :uniqueness => { :case_sensitive => false }
+
+  def admin?
+    role.name.downcase == 'admin'
+  end
+
+  def power_user?
+    role.name.downcase == 'power user'
+  end
+
+  def privileged_user?
+    admin? || power_user?
+  end
 end
