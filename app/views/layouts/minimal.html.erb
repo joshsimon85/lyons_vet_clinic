@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Lyons Vet Clinic | <%= yield :title %></title>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= yield :stylesheet %>
+
+    <link href="https://fonts.googleapis.com/css?family=Handlee&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+
+    <%= javascript_pack_tag 'application' %>
+    <%= yield :javascripts %>
+  </head>
+
+  <body>
+      <%= render partial: 'shared/sticky_nav', locals: { :active => "#{yield :active}" } %>
+      <%= render partial: 'shared/small_nav', locals: { :active => "#{yield :active}" } %>
+
+    <%= yield %>
+
+  </body>
+
+</html>

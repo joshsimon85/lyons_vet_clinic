@@ -1,8 +1,8 @@
 module Users
   class AdminsController < ApplicationController
-    layout false
+    layout 'minimal'
 
-    before_action :requires_privileged_user!
+    before_action :require_privileged_user!
 
     def index
       @user = current_user

@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     super
   end
 
-  def requires_privileged_user!
+  def require_privileged_user!
     unless authenticate_user! &&
          (current_user.admin? || current_user.power_user?)
       flash[:alert] = 'You are not permitted to do that'
