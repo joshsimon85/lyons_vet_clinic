@@ -1,0 +1,5 @@
+<% content_for :title, 'Dashboard' %>
+<% content_for :active, 'dashboard' %>
+
+<h4>Welcome <%= @user.full_name %></h4>
+<%= link_to 'Roles', roles_path %>

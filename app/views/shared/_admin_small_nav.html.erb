@@ -1,0 +1,15 @@
+<header class="sm-nav">
+  <nav>
+    <%= link_to root_path, :class => "hamburger_menu" do %>
+      <%= image_tag "hamburger_menu" %>
+    <% end %>
+    <%= link_to root_path, :class => "close hidden" do %>
+      <%= image_tag "close" %>
+    <% end %>
+    <%= link_to 'Lyons Vetinary Clinic', root_path %>
+    <%= link_to root_path do %>
+      <%= image_tag "light_logo" %>
+    <% end %>
+    <%= render partial: 'shared/admin_nav_items', locals: { :active => active } %>
+  </nav>
+</header>

@@ -6,7 +6,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, :confirmable, :lockable
 
-  validates :full_name, :email, :password, :presence => true
+  validates :full_name, :password, :presence => true
+  validates :email, :presence => true, :format => { :with => /\A.+@.+\z/,
+    :message => 'must be properly formatted' }
   validates_with PositionIdValidator
   validates_with DescriptionValidator
   validates :email, :uniqueness => { :case_sensitive => false }

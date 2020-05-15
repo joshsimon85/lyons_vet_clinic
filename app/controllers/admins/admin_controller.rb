@@ -1,6 +1,6 @@
-module Users
-  class AdminsController < ApplicationController
-    layout 'minimal'
+module Admins
+  class AdminController < ApplicationController
+    layout 'admin'
 
     before_action :require_privileged_user!
 

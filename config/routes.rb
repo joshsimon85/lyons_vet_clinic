@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, path: '', controllers: { sessions: 'users/sessions' }
+  devise_for :users, path: '', controllers: { sessions: 'users/sessions' },
+    :skip => [:registrations]
 
   root 'static_pages#index'
 
@@ -9,9 +10,16 @@ Rails.application.routes.draw do
   get 'uvh', to: 'static_pages#uvh'
   get 'contact_us', to: 'static_pages#contact_us'
 
-  scope module: 'users' do
-    resource :admin, except: [:index] do
-      get 'dashboard', to: 'admins#index'
+  authenticated do
+    scope module: 'users' do
+
+    end
+
+    scope module: 'admins', path: 'admin' do
+      resources :users
+      resources :roles
+
+      get 'dashboard', to: 'admin#index'
     end
   end
 

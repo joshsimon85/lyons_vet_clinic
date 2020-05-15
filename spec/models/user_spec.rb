@@ -9,6 +9,34 @@ RSpec.describe User do
   it { should validate_presence_of(:password) }
   it { should validate_uniqueness_of(:email).case_insensitive }
 
+  describe 'email format validations' do
+    it 'raises an error with an email excluding @' do
+      role = create(:role, :name => 'user')
+      jane = build(:user, :role => role, :email => 'janeDoe')
+
+      expect(jane.valid?).to be(false)
+      expect(jane.errors.full_messages)
+        .to include('Email must be properly formatted')
+    end
+
+    it 'raises an error with an email excluding anything after @' do
+      role = create(:role, :name => 'user')
+      jane = build(:user, :role => role, :email => 'janeDoe@')
+
+      expect(jane.valid?).to be(false)
+      expect(jane.errors.full_messages)
+        .to include('Email must be properly formatted')
+    end
+
+    it 'creates the record with a properly formatted email' do
+      role = create(:role, :name => 'user')
+      jane = create(:user, :role => role, :email => 'jane@doe.com')
+
+      expect(User.count).to be(1)
+      expect(User.first.full_name).to eq(jane.full_name)
+    end
+  end
+
   describe 'users belongs to a role' do
     it 'has a role id assigned' do
       role =  create(:role, :name => 'admin')

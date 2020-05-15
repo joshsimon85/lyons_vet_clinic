@@ -19,10 +19,11 @@
   </head>
 
   <body>
-    <%= render partial: 'shared/sticky_nav', locals: { :active => "#{yield :active}" } %>
-    <%= render partial: 'shared/small_nav', locals: { :active => "#{yield :active}" } %>
+    <%= render partial: 'shared/admin_sticky_nav', locals: { :active => "#{yield :active}" } %>
+    <%= render partial: 'shared/admin_small_nav', locals: { :active => "#{yield :active}" } %>
 
     <%= yield %>
 
   </body>
+
 </html>

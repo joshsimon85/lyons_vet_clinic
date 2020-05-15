@@ -45,6 +45,9 @@
     <% end %>
   </li>
   <% if current_user %>
+    <% if privileged_user? %>
+      <li><%= link_to 'Dashboard', dashboard_path %></li>
+    <% end %>
     <li>
       <%= link_to 'Sign Out', destroy_user_session_path, :id => 'sign-out', :method => :delete %>
     </li>
