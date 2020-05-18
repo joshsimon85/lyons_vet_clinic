@@ -20,6 +20,9 @@
     License: none (public domain)
   */
 
+// dark gray #8C8C8C
+// light gray #AFAFAF
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -79,6 +82,10 @@ body {
 	position: relative;
 }
 
+textarea {
+	resize: vertical;
+}
+
 a {
   text-decoration: none;
 }
@@ -123,15 +130,10 @@ hr {
 	display: none;
 }
 
-
 // header and navbar
 header.collapsed {
 	display: none;
 	height: 55px;
-}
-
-#sign-out {
-	
 }
 
 header {
@@ -154,7 +156,7 @@ header {
 		background: rgba(78, 94, 169, 0.8);
 		position: fixed;
 		top: 0;
-		z-index: 100;
+		z-index: 10;
 		ul {
 			background: transparent;
 			border: none;
@@ -222,18 +224,6 @@ header {
   	}
 	}
 }
-// Section banner photo
-main {
-	section:nth-of-type(1) {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 50vh;
-    overflow: hidden;
-    position: relative;
-		top: -2px;
-  }
-}
 
 // small screen nav
 .sm-nav {
@@ -242,7 +232,7 @@ main {
 	top: 0;
 	right: 0;
 	left: 0;
-	z-index: 100;
+	z-index: 10;
 	.hamburger_menu, .close {
 		display: inline-block;
 		margin-left: 3%;
@@ -418,25 +408,62 @@ footer {
 	}
 }
 
-input:focus {
-	outline: 2px solid #727DBA;
+input, textarea, select {
+	border: 1px solid #AFAFAF;
+	border-radius: 5px;
+}
+input:focus, textarea:focus, select:focus {
+	outline: none;
+	border: 1px solid #727DBA;
+	box-shadow: 0 0 1px 3px rgba(114, 125, 186, .7);
+	box-shadow: 0 0 0 3px -moz-mac-focusring;
 }
 
-input[type="submit"].btn {
+.btn {
 	border: 2px solid #727DBA;
 	border-radius: 5px;
 	color: #727DBA;
 	display: inline-block;
 	font-size: 1rem;
-	padding: .4rem 0;
+	padding: .6rem 0;
 	-webkit-appearance: none;
 	-moz-appearance: none; appearance: none;
 }
 
-input[type="submit"].btn:hover {
+.btn:hover {
 	cursor: pointer;
 	background: #727DBA;
 	color: white;
+}
+
+select {
+	display: block;
+	font-size: 1rem;
+	line-height: 1.3;
+	padding: 5px 1.5rem 5px .75rem;
+	box-sizing: border-box;
+	margin: 0;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #fff;
+	background-image: url(<%= asset_url('caret-down.png') %>);
+	background-repeat: no-repeat, repeat;
+	background-position: right .5rem top 50%, 0 0;
+	background-size: .5rem auto, 100%;
+}
+select::-ms-expand {
+	display: none;
+}
+select:hover {
+	border-color: #888;
+}
+select:focus {
+	color: #222;
+}
+select option {
+	font-weight:normal;
 }
 // form-fields
 .text-field {
@@ -448,6 +475,7 @@ input[type="submit"].btn:hover {
 label {
 	font-size: 1.25rem;
 }
+
 // display
 .d-inline-block {
 	display: inline-block;
@@ -463,8 +491,11 @@ label {
 }
 
 .w-80 {
-	outline: 1px solid green;
 	width: 80%;
+}
+
+.w-75 {
+	width: 75%;
 }
 
 .w-60 {
@@ -478,11 +509,19 @@ label {
 .w-25 {
 	width: 25%;
 }
+
+.w-15 {
+	width: 15%;
+}
+
 // text align
 .text-center {
 	text-align: center;
 }
 
+.v-center {
+	align-self: center;
+}
 //margins
 .m-center {
 	margin: 0 auto;
@@ -564,15 +603,44 @@ label {
 }
 
 .secondary {
-	color: #212C5C
+	color: #212C5C;
 }
 
 @media (min-width: 0px) {
 	body {
 		padding-top: 5.0rem;
 	}
+
 	.lg-nav, .lg-nav + hr {
 		display: none;
+	}
+
+	.sm-w-100 {
+		width: 100%;
+	}
+
+	.sm-w-95 {
+		width: 95%;
+	}
+	
+	.sm-w-90 {
+		width: 90%;
+	}
+
+	.sm-w-80 {
+		width: 80%;
+	}
+
+	.sm-w-60 {
+		width: 60%;
+	}
+
+	.sm-w-50 {
+		width: 50%;
+	}
+
+	.sm-w-25 {
+		width: 25%;
 	}
 }
 
@@ -612,7 +680,7 @@ label {
 			position: absolute;
 			top: 23%;
 			left: 1.5rem;
-			z-index: 1000;
+			z-index: 1;
 			li {
 				height: 55px;
 				margin-bottom: 1.5rem;
@@ -622,6 +690,37 @@ label {
 				}
 			}
 		}
+	}
+	.btn {
+		padding: .4rem 0;
+	}
+
+	.md-w-100 {
+		width: 100%;
+	}
+
+	.md-w-90 {
+		width: 90%;
+	}
+
+	.md-w-80 {
+		width: 80%;
+	}
+
+	.md-w-60 {
+		width: 60%;
+	}
+
+	.md-w-50 {
+		width: 50%;
+	}
+
+	.md-w-25 {
+		width: 25%;
+	}
+
+	.md-w-15 {
+		width: 15%;
 	}
 }
 
@@ -649,6 +748,30 @@ label {
 
 	.lg-nav, .lg-nav + hr {
 		display: block;
+	}
+
+	.lg-w-100 {
+		width: 100%;
+	}
+
+	.lg-w-80 {
+		width: 80%;
+	}
+
+	.lg-w-60 {
+		width: 60%;
+	}
+
+	.lg-w-50 {
+		width: 50%;
+	}
+
+	.lg-w-25 {
+		width: 25%;
+	}
+
+	.lg-w-15 {
+		width: 15%;
 	}
 }
 

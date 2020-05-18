@@ -4,6 +4,14 @@ class Admins::RolesController < ApplicationController
   before_action :require_privileged_user!
 
   def index
-    @roles = nil
+    @roles = Role.all
   end
+
+  def new
+
+  end
+
+  def create
+
+  end 
 end

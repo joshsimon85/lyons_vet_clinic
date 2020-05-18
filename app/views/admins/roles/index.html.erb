@@ -1,0 +1,59 @@
+<% content_for :title, 'Roles' %>
+
+<% content_for :active, 'roles' %>
+
+<% content_for :javascripts do %>
+  <%= javascript_pack_tag 'admin/roles_index' %>
+<% end %>
+
+<main class="mt-3 sm-w-90 m-center">
+  <h2 class="secondary text-center mb-2">Roles</h2>
+  <% if @roles.empty? %>
+    <p>There are no roles to show</p>
+  <% else %>
+    <table class="w-100 text-center mb-3">
+      <thead>
+        <tr>
+          <th>Role Name</th>
+          <th>Description</th>
+          <th>Deleteable</th>
+          <th>Linked Records</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @roles.each do |role| %>
+          <tr>
+            <td>
+              <%= link_to "#{role.name}", role_path(role) %>
+            </td>
+            <td><%= role.description %></td>
+            <td><%= role.deletable %></td>
+            <td><%= pluralize(role.users.count, 'user') %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <%= link_to 'Create A New Role', new_role_path, :class => 'btn sm-w-100 md-w-25 lg-w-15 text-center m-center', :data => { :target => 'modal' } %>
+
+  <section class="modal hidden sm-w-95 md-w-90 lg-w-60">
+    <h3 class="secondary text-center mt-3 mb-2">Create A New Role</h3>
+    <%= link_to roles_path, :data => { :target => 'close-modal' } do %>
+      <%= image_tag "secondary-close", :class => 'd-inline-block' %>
+    <% end %>
+    <%= form_for Role.new do |f| %>
+      <dl>
+        <dt class="v-center"><%= f.label :name%></dt>
+        <dd class="mb-1"><%= f.text_field :name, :class => 'd-inline-block lg-w-50'%></dd>
+        <dt class="v-center"><%= f.label :description %></dt>
+        <dd class="mb-1"><%= f.text_area :description, :class => 'w-100' %></dd>
+        <dt class="v-center"><%= f.label :deletable %></dt>
+        <dd class="mb-1"><%= f.select :deletable, options_for_select([true, false], true) %></dd>
+      </dl>
+
+      <%= f.submit 'Submit', :class => 'btn sm-w-100 md-w-25 mb-3' %>
+    <% end %>
+  </section>
+</main>
+<div class="modal-overlay hidden"></div>
