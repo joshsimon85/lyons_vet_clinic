@@ -5,7 +5,7 @@
 <% end %>
 
 <% content_for :javascripts do %>
-  <%= javascript_pack_tag "form_validations" %>
+  <%= javascript_pack_tag "static_pages/contact_form_validator" %>
 <% end %>
 
 <% content_for :header_tag do %>
@@ -19,7 +19,7 @@
     <h2 class="text-shadow">Contact Us</h2>
   </section>
   <section class="box-shadow">
-    <form action="index.html" method="post" novalidate>
+    <form id="email" action="index.html" method="post" novalidate>
       <dl>
         <dt><label for="full_name">Full Name <span>*</span></label></dt>
         <dt class="hidden"><label class="error_message" for="full_name">Full Name is required <span>*</span></label></dt>
