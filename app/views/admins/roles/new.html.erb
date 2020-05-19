@@ -1,0 +1,21 @@
+<% content_for :title, 'New Role' %>
+
+<% content_for :active, 'roles' %>
+
+<main>
+  <section class="form-container sm-w-95 md-w-90 lg-w-60 m-center">
+    <h3 class="secondary text-center mt-3 mb-2">Create A New Role</h3>
+    <%= form_for Role.new do |f| %>
+      <dl>
+        <dt class="v-center"><%= f.label :name%></dt>
+        <dd class="mb-1"><%= f.text_field :name, :class => 'd-inline-block lg-w-50'%></dd>
+        <dt class="v-center"><%= f.label :description %></dt>
+        <dd class="mb-1"><%= f.text_area :description, :class => 'w-100' %></dd>
+        <dt class="v-center"><%= f.label :deletable %></dt>
+        <dd class="mb-1"><%= f.select :deletable, options_for_select([true, false], true) %></dd>
+      </dl>
+
+      <%= f.submit 'Submit', :class => 'btn sm-w-100 md-w-25 mb-3' %>
+    <% end %>
+  </section>
+</main>

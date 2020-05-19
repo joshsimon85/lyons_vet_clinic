@@ -7,11 +7,9 @@ class Admins::RolesController < ApplicationController
     @roles = Role.all
   end
 
-  def new
-
-  end
+  def new; end
 
   def create
 
-  end 
+  end
 end

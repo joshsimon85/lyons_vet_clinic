@@ -30,10 +30,24 @@ tbody {
 	z-index: 50;
 }
 
-.modal {
+.form-container {
 	background: #fff;
 	border-radius: 4px;
 	padding: 0 2rem;
+	dt {
+		margin-bottom: 0.5rem;
+	}
+
+  input[type="text"], textarea {
+    font-size: 1rem;
+    padding: .5rem 5px;
+  }
+  textarea {
+    height: 200px;
+  }
+}
+
+.modal {
 	position: fixed;
 	top: 50%;
   left: 50%;
@@ -50,18 +64,6 @@ tbody {
 			width: 20px;
 		}
 	}
-
-	dt {
-		margin-bottom: 0.5rem;
-	}
-
-  input[type="text"], textarea {
-    font-size: 1rem;
-    padding: .5rem 5px;
-  }
-  textarea {
-    height: 200px;
-  }
 }
 
 @media (min-width: 0px) {
@@ -88,7 +90,7 @@ tbody {
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-	.modal {
+	.form-container {
 		dl {
 			display: grid;
 			grid-template-columns: 20% 80%;
