@@ -75,6 +75,76 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+// dialog close icon
+[data-dismiss="close"] {
+	background: center / contain no-repeat url(<%= asset_url('red-close.png') %>);
+	display: inline-block;
+	height: 16px;
+	text-indent: 10000px;
+	width: 16px;
+	position: absolute;
+	right: 10px;
+	z-index: 1;
+}
+
+// flash messages
+.flash-messages {
+	font-size: 1.10rem;
+	position: relative;
+	top: -3px;
+	.error {
+		padding: 10px;
+	}
+}
+
+// errors
+.error {
+	background: #F2DEDE;
+	color: #BE5857;
+	h4 {
+		font-size: 1.1rem;
+		padding: 1rem;
+	}
+}
+
+// form error messages
+section.error {
+	position: relative;
+	[data-dismiss="close"] {
+		top: 1rem;
+		right: 1rem;
+	}
+}
+
+.error-messages {
+	list-style: disc;
+	margin-left: 3rem;
+	padding-bottom: 1rem;
+	li {
+		margin: 5px 0;
+	}
+	li:first-of-type {
+		margin-top: 0;
+	}
+}
+
+label > span {
+	font-size: 1rem;
+}
+
+input.invalid, textarea.invalid {
+	border: 1px solid red;
+}
+
+label.invalid {
+	color: red;
+}
+
+section.error {
+	border-radius: 5px;
+	margin-bottom: 1rem;
+	margin-top: -1rem;
+}
 
 // global
 body {
@@ -474,6 +544,11 @@ select option {
 
 label {
 	font-size: 1.25rem;
+}
+
+// font weight
+.bold {
+	font-weight: 700;
 }
 
 // display

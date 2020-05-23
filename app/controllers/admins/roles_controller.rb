@@ -5,6 +5,7 @@ class Admins::RolesController < ApplicationController
 
   def index
     @roles = Role.all
+    @role = Role.new
   end
 
   def new
@@ -18,8 +19,13 @@ class Admins::RolesController < ApplicationController
       flash[:success] = 'The role has been successfully created.'
       redirect_to roles_path
     else
-      flash.now[:error] = 'There was an error creating the role.'
-      render :new
+      respond_to do |format|
+        format.html {
+          flash.now[:error] = 'There was an error creating the role.'
+          render :new
+        }
+        format.js
+      end
     end
   end
 

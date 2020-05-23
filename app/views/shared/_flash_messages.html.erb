@@ -1,0 +1,10 @@
+<div class="flash-messages">
+  <% flash.each do |type, msg| %>
+    <% if type == "error" %>
+      <div data-dismissible="true" class="error">
+        <%= msg %>
+        <%= link_to 'close', nil, :'data-dismiss' => 'close' %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

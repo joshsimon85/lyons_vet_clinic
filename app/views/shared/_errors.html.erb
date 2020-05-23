@@ -1,0 +1,14 @@
+<section data-dismissible="true" class="error">
+  <% if !obj.errors.empty? %>
+    <h4 class="bold">
+      The following <%= pluralize(obj.errors.count, 'error') %> prevented your
+      <%= obj.class.name %> from being saved:
+    </h4>
+    <%= link_to 'Close', nil, :'data-dismiss' => 'close' %>
+    <ul class="error-messages">
+      <% obj.errors.full_messages.each do |m| %>
+        <li><%= m %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>

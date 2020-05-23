@@ -95,4 +95,12 @@ RSpec.describe Admins::RolesController do
       end
     end
   end
+
+  describe 'GET show' do
+    let(:role) { create(:role) }
+
+    it_behaves_like 'requires privileged user' do
+      let(:action) { get :show,:params => { :id => role.id } }
+    end
+  end
 end

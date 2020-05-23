@@ -23,6 +23,7 @@
   </head>
 
   <body>
+    
     <%= render partial: 'shared/navbar', locals: { :active => "#{yield :active}" } %>
     <%= render partial: 'shared/small_nav', locals: { :active => "#{yield :active}" } %>
     <%= yield %>

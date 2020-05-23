@@ -1,0 +1,6 @@
+document.querySelector('section.error').innerHTML = ("<%= j render(:partial =>
+  'shared/errors', :locals => { :obj => @role }) %>");
+
+document.querySelector('.flash-messages').innerHTML =
+  '<div class="error" data-dismissible="true">There was an error creating the' +
+  ' role. <a href="#" data-dismiss="close">close</a></div>';
