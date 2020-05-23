@@ -8,6 +8,10 @@ class Admins::RolesController < ApplicationController
     @role = Role.new
   end
 
+  def show
+    @role = Role.find(params[:id])
+  end
+
   def new
     @role = Role.new
   end
