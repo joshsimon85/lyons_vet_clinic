@@ -27,8 +27,8 @@ admin = User.create({ :full_name => 'Jon Doe',
                            :position => vet_tech,
                            :description => 'Fun person' })
 
-employee = User.create({ :full_name => 'Jan Doe',
-                         :email => 'jan@doe.com',
+employee = User.create({ :full_name => 'Jane Doe',
+                         :email => 'jane@doe.com',
                          :password => 'password',
                          :confirmed_at => Time.now,
                          :role => employee,

@@ -102,5 +102,14 @@ RSpec.describe Admins::RolesController do
     it_behaves_like 'requires privileged user' do
       let(:action) { get :show,:params => { :id => role.id } }
     end
+
+    context 'with authenticated admin' do
+      before { sign_in(jon) }
+
+      it 'should render the show template' do
+        get :show, :params => { :id => role.slug }
+        expect(response).to render_template(:show)
+      end
+    end
   end
 end

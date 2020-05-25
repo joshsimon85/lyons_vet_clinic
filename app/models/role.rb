@@ -6,4 +6,16 @@ class Role < ApplicationRecord
   validates :description, :presence => true
   validates :deletable, :inclusion => { :in => [ true, false],
                                         :message => 'requires true or false' }
+
+  before_save :set_slug
+
+  def to_param
+    name.downcase.parameterize
+  end
+
+  private
+
+  def set_slug
+    self.slug = name.downcase.parameterize
+  end
 end

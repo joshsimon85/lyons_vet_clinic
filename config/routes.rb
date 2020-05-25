@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
     scope module: 'admins', path: 'admin' do
       resources :users
-      resources :roles, only: [:index, :new, :create, :show]
+      resources :roles
 
       get 'dashboard', to: 'admin#index'
     end

@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
   end
 
   def privileged_user?
-    current_user.admin? || current_user.power_user?
+    (current_user && current_user.admin?) ||
+    (current_user && current_user.power_user?)
   end
 
   def require_privileged_user!

@@ -23,5 +23,15 @@ RSpec.describe Role do
       expect{ create(:role, :deletable => nil) }
         .to raise_error(ActiveRecord::RecordInvalid)
     end
+
+    it 'sets a slug' do
+      role = create(:role, :name => 'power user')
+      expect(role.slug).to eq('power-user')
+    end
+
+    it 'sets a the slug to the paramatized downcase of the name' do
+      role = create(:role, :name => 'Power UsEr')
+      expect(role.slug).to eq('power-user')
+    end
   end
 end
