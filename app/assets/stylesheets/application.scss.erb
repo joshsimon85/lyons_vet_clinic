@@ -152,7 +152,12 @@ body {
 	position: relative;
 }
 
+input {
+	font-family: 'Karla', 'Roboto', sans-serif;
+}
+
 textarea {
+	font-family: 'Karla', 'Roboto', sans-serif;
 	resize: vertical;
 }
 
@@ -500,9 +505,21 @@ input:focus, textarea:focus, select:focus {
 	-moz-appearance: none; appearance: none;
 }
 
+.btn.danger {
+	border: 2px solid red;
+	border-radius: 5px;
+	color: red;
+}
+
 .btn:hover {
 	cursor: pointer;
 	background: #727DBA;
+	color: white;
+}
+
+.btn.danger:hover {
+	cursor: pointer;
+	background: red;
 	color: white;
 }
 
@@ -630,6 +647,9 @@ label {
 	margin-bottom: 3rem;
 }
 
+.ml-1 {
+	margin-left: 1rem;
+}
 // padding
 .pt-1 {
 	padding-top: 1rem;
@@ -780,6 +800,10 @@ label {
 
 	.md-w-80 {
 		width: 80%;
+	}
+
+	.md-w-75 {
+		width: 75%;
 	}
 
 	.md-w-60 {

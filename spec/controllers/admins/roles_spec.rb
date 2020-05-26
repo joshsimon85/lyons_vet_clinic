@@ -112,4 +112,43 @@ RSpec.describe Admins::RolesController do
       end
     end
   end
+
+  describe 'GET edit' do
+    let(:role) { create(:role) }
+
+    it_behaves_like 'requires privileged user' do
+      let(:action) { get :edit, :params => { :id => role.id } }
+    end
+
+    context 'with authenticated admin' do
+      before { sign_in(jon) }
+
+      it 'should render the edit template' do
+        get :edit, :params => { :id => role.slug }
+        expect(response).to render_template(:edit)
+      end
+    end
+  end
+
+  describe 'PATCH update' do
+    let(:role) { create(:role) }
+
+    it_behaves_like 'requires privileged user' do
+      let(:action) { patch :update, :params => {  } }
+    end
+
+    context 'with authenticated admin' do
+      before { sign_in(jon) }
+
+      context 'with all required fields filled in' do
+        it 'should render the edit template' do
+
+        end
+      end
+
+      context 'with out all required fields filled in' do
+
+      end
+    end
+  end
 end

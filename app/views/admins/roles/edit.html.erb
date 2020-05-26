@@ -1,14 +1,20 @@
-<% content_for :title, 'New Role' %>
+<% content_for :title, "Edit #{format_name(@role.name)}" %>
 
 <% content_for :active, 'roles' %>
 
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "admins/roles", media: "all" %>
+<% end %>
+
 <% content_for :javascripts do %>
-  <%= javascript_pack_tag 'admins/roles_new' %>
+  <%= javascript_pack_tag 'admins/roles_edit' %>
 <% end %>
 
 <main class="mt-3">
   <section class="form-container sm-w-95 md-w-90 lg-w-60 m-center">
-    <h2 class="h3 secondary text-center mt-3 mb-3">Create A New Role</h2>
+    <h2 class="h3 secondary text-center mt-3 mb-3">
+      Edit <%=format_name(@role.name) %>
+    </h2>
     <%= render partial: 'shared/errors', :locals =>
                                           { :obj => @role } %>
     <%= form_for @role, :remote => true, :html => { :novalidate => "true" } do |f| %>

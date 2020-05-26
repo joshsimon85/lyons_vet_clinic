@@ -33,6 +33,18 @@ class Admins::RolesController < ApplicationController
     end
   end
 
+  def edit
+    @role = Role.find_by(:slug => params[:id])
+  end
+
+  def update
+    
+  end
+
+  def destroy
+
+  end
+
   private
 
   def role_params
