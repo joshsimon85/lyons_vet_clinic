@@ -134,20 +134,76 @@ RSpec.describe Admins::RolesController do
     let(:role) { create(:role) }
 
     it_behaves_like 'requires privileged user' do
-      let(:action) { patch :update, :params => {  } }
+      let(:action) { patch :update, :params => { :id => role.slug, :role => { :name => 'new name'} } }
     end
 
     context 'with authenticated admin' do
       before { sign_in(jon) }
 
       context 'with all required fields filled in' do
-        it 'should render the edit template' do
+        let(:slug) { role.slug }
+        let(:name) { role.name }
+        let(:description) { role.description }
+        let(:deletable) { role.deletable }
 
+        before do
+          patch :update, :params => {
+            :id => slug, :role => {
+              :name => role.name + ' test',
+              :description => role.description + ' test',
+              :deletable => !role.deletable
+            }
+          }
+        end
+
+        it 'redirects to the roles path' do
+          expect(response).to redirect_to(roles_path)
+        end
+
+        it 'sets the flash success message' do
+          expect(flash[:success]).to be_present
+        end
+
+        it 'updates the attributes' do
+          new_slug = "#{name} test".parameterize
+
+          expect(Role.find_by(:slug => new_slug).name).to eq("#{name} test")
+          expect(Role.find_by(:slug => new_slug).description)
+            .to eq("#{description} test")
+          expect(Role.find_by(:slug => new_slug).deletable).to eq(!deletable)
+          expect(Role.find_by(:slug => slug)).to be_nil
         end
       end
 
-      context 'with out all required fields filled in' do
+      context 'with invalid required attributes' do
+        let(:slug) { role.slug }
+        let(:name) { role.name }
+        let(:description) { role.description }
+        let(:deletable) { role.deletable }
 
+        before do
+          patch :update, :params => {
+            :id => slug, :role => {
+              :name => '',
+              :description => '',
+              :deletable => role.deletable
+            }
+          }
+        end
+
+        it 'sets the flash error message' do
+          expect(flash[:error]).to be_present
+        end
+
+        it 'does renders the update template' do
+          expect(response).to render_template(:edit)
+        end
+
+        it 'does not update the role' do
+          expect(Role.find_by(:slug => slug).name).to eq(name)
+          expect(Role.find_by(:slug => slug).description).to eq(description)
+          expect(Role.find_by(:slug => slug).deletable).to eq(deletable)
+        end
       end
     end
   end

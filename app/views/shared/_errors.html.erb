@@ -2,7 +2,7 @@
   <% if !obj.errors.empty? %>
     <h4 class="bold">
       The following <%= pluralize(obj.errors.count, 'error') %> prevented your
-      <%= obj.class.name %> from being saved:
+      <%= obj.class.name.downcase %> from being <%= action %>:
     </h4>
     <%= link_to 'Close', nil, :'data-dismiss' => 'close' %>
     <ul class="error-messages">

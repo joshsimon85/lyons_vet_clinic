@@ -4,6 +4,6 @@ module ApplicationHelper
       ''
     else
       name.split.map(&:capitalize).join(' ')
-    end 
+    end
   end
 end

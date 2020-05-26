@@ -1,4 +1,6 @@
 class Admins::RolesController < ApplicationController
+  include ApplicationHelper
+
   layout 'admin'
 
   before_action :require_privileged_user!
@@ -38,7 +40,21 @@ class Admins::RolesController < ApplicationController
   end
 
   def update
-    
+    @role = Role.find_by(:slug => params[:id])
+    @role.update(role_params)
+
+    if @role.save
+      flash[:success] = "#{format_name(@role.name)} role has been updated."
+      redirect_to roles_path
+    else
+      respond_to do |format|
+        format.html {
+          flash.now[:error] = "There was a problem updating the #{format_name(@role.name)} role."
+          render :edit
+        }
+        format.js
+      end 
+    end
   end
 
   def destroy
