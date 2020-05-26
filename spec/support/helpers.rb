@@ -25,4 +25,21 @@ module Helpers
 
     create(:user, :role => role)
   end
+
+  def sign_in(user)
+    visit new_user_session_path
+    fill_in 'Email', :with => user.email
+    fill_in 'Password', :with => user.password
+
+    click_button 'Sign in'
+  end
+
+  def create_role!
+    visit new_role_path
+
+    fill_in 'Name', :with => 'Admin'
+    fill_in 'Description', :with => 'Admin role'
+
+    click_button 'Submit'
+  end
 end
