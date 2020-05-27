@@ -207,4 +207,39 @@ RSpec.describe Admins::RolesController do
       end
     end
   end
+
+  describe 'DELETE destroy' do
+    let(:non_deletable_role) { create(:role, :deletable => false) }
+    let(:deletable_role) { create(:role, :deletable => true) }
+
+    it_behaves_like 'requires privileged user' do
+      let(:action) {
+        delete :destroy, :params => { :id => non_deletable_role.slug }
+      }
+    end
+
+    context 'with authenticated admin' do
+      before { sign_in(jon) }
+
+      context 'with role that has its deletable attribute set to true' do
+        let(:jane) { create(:user, :role => deletable_role.id) }
+
+        before do
+          delete :destroy, :params => { :id => deletable_role.slug }
+        end
+
+        it 'sets the flash success message' do
+          expect(flash[:success]).to be_present
+        end
+
+        it 'deletes the role' do
+          expect(Role.find_by(:slug => deletable_role.slug)).to be_nil
+        end
+
+        it 'should delete all linked users associated with it' do
+          expect(User.find_by(:role_id => deletable_role.id)).to be_nil
+        end
+      end
+    end
+  end
 end

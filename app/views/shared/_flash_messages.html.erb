@@ -1,10 +1,18 @@
 <div class="flash-messages">
   <% flash.each do |type, msg| %>
-    <% if type == "error" %>
+    <% if type == "error" || type == "alert" %>
       <div data-dismissible="true" class="error">
         <%= msg %>
         <%= link_to 'close', nil, :'data-dismiss' => 'close' %>
       </div>
+    <% elsif type == "success" || type == 'notice' %>
+      <div data-dismissible="true" class="success">
+        <%= msg %>
+        <%= link_to 'close', nil, :'data-dismiss' => 'close' %>
+      </div>
+    <% else %>
+      <%= msg %>
+      <%= type %>
     <% end %>
   <% end %>
 </div>

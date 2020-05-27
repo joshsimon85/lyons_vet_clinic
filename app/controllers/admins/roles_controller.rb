@@ -21,13 +21,16 @@ class Admins::RolesController < ApplicationController
   def create
     @role = Role.create(role_params)
 
-    if @role.valid?
-      flash[:success] = 'The role has been successfully created.'
-      redirect_to roles_path
-    else
-      respond_to do |format|
+    respond_to do |format|
+      if @role.valid?
+        flash[:success] = 'The role has been successfully created.'
         format.html {
-          flash.now[:error] = 'There was an error creating the role.'
+          redirect_to roles_path
+        }
+        format.js
+      else
+        flash.now[:error] = 'There was an error creating the role.'
+        format.html {
           render :new
         }
         format.js
@@ -43,22 +46,38 @@ class Admins::RolesController < ApplicationController
     @role = Role.find_by(:slug => params[:id])
     @role.update(role_params)
 
-    if @role.save
-      flash[:success] = "#{format_name(@role.name)} role has been updated."
-      redirect_to roles_path
-    else
-      respond_to do |format|
+    respond_to do |format|
+      if @role.save
+        flash[:success] = "#{format_name(@role.name)} role has been updated."
+
         format.html {
-          flash.now[:error] = "There was a problem updating the #{format_name(@role.name)} role."
+          redirect_to roles_path
+        }
+        format.js
+      else
+        flash.now[:error] = "There was a problem updating the #{format_name(@role.name)} role."
+
+        format.html {
           render :edit
         }
         format.js
-      end 
+      end
     end
   end
 
   def destroy
+    @role = Role.find_by(:slug => params[:id])
+    name = format_name(@role.name)
 
+    if @role && @role.deletable
+      @role.destroy
+
+      flash[:success] = "#{name} has been successfully deleted."
+      redirect_to roles_path
+    else
+      flash.now[:error] = "#{name} has it's deletable property set to false, therefore it can't be deleted."
+      render :edit
+    end
   end
 
   private

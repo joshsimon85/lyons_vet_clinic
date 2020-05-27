@@ -48,7 +48,7 @@
                                               :obj => @role,
                                               :action => 'created'
                                             } %>
-      <dl>
+      <dl class="mb-1">
         <dt class="v-center">
           <%= f.label :name do %>
             Name <span>*</span>
@@ -67,11 +67,12 @@
           <% end %>
         </dt>
         <dd class="mb-1"><%= f.select :deletable, options_for_select([true, false], true) %></dd>
+        <dt></dt>
+        <dd>* Denotes a required field</dd>
       </dl>
 
       <%= f.submit 'Submit', :class => 'btn sm-w-100 md-w-25 mb-1' %>
-
-      <p class="mb-3">* Denotes a required field</p>
+  
     <% end %>
   </section>
 </main>

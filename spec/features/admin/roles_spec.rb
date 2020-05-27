@@ -20,6 +20,31 @@ describe 'CRUD role actions' do
     expect(page).to have_content('prevented your role from being created')
   end
 
+  scenario 'creating a new valid role from roles index', :js => true do
+    visit roles_path
+
+    click_link 'Create A New Role'
+    fill_in 'Name', :with => 'Power User'
+    fill_in 'Description', :with => 'External User'
+    click_button 'Submit'
+
+    expect(page).to have_selector('.success')
+    expect(page).to have_content('The role has been successfully created.')
+    expect(page).to have_current_path(roles_path)
+  end
+
+  scenario 'creating a new valid role from the roles new path', :js => true do
+    visit new_role_path
+
+    fill_in 'Name', :with => 'Power User'
+    fill_in 'Description', :with => 'External User'
+    click_button 'Submit'
+
+    expect(page).to have_selector('.success')
+    expect(page).to have_content('The role has been successfully created.')
+    expect(page).to have_current_path(roles_path)
+  end
+
   scenario 'creating a new invalid role from roles#new', :js => true do
     visit new_role_path
 
@@ -39,13 +64,11 @@ describe 'CRUD role actions' do
 
     click_link 'admin'
     click_link 'Edit Admin'
-
     fill_in 'Name', :with => ''
-
     click_button 'Submit'
 
     expect(page).to have_selector('.error')
-    expect(page).to have_content('There was an error updating the role.')
+    expect(page).to have_content('There was a problem updating ')
     expect(page).to have_content('prevented your role from being updated')
     expect(page).to have_content("Name can't be blank")
   end
