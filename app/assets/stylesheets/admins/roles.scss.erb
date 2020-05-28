@@ -1,5 +1,9 @@
+aside.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
 dl.generic {
-  margin-right: 7rem;
   dt {
     font-size: 1.25rem;
     font-weight: 700;
@@ -14,14 +18,11 @@ dl.generic:nth-of-type(3) {
   margin-right: 0;
 }
 
-section {
-  ol {
-    font-size: 1.1rem;
-    li:nth-of-type(2n+1) {
-      font-weight: 700;
-    }
-    li:nth-of-type(2n+2) {
-      margin-left: .5rem;
-    }
+section.linked-users {
+  dl {
+    margin-right: 2rem;
+  }
+  dl:last-of-type {
+    margin-right: 0;
   }
 }

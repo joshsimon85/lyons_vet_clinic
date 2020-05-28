@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'CRUD role actions' do
   let(:jon) { create_admin! }
 
-  before :each do
+  before  do
     sign_in(jon)
   end
 

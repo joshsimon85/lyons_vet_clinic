@@ -42,4 +42,14 @@ module Helpers
 
     click_button 'Submit'
   end
+
+  def create_deletable_role!
+    visit new_role_path
+
+    fill_in 'Name', :with => 'Admin'
+    fill_in 'Description', :with => 'Admin role'
+    select 'false', :from => 'role_deletable'
+
+    click_button 'Submit'
+  end
 end

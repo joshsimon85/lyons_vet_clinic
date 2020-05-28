@@ -1,6 +1,5 @@
 import { Modal } from '../modal';
 import { FormValidator } from '../form_validations';
-import { Dismiss } from '../dismiss';
 
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.querySelector('.modal');
@@ -8,5 +7,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   new Modal(modal, modalLink).init();
   new FormValidator('new_role').init();
-  new Dismiss().init();
 });
