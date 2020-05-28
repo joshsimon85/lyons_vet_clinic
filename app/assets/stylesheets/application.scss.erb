@@ -1,3 +1,4 @@
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -77,7 +78,6 @@ html {
 }
 // dialog close icon
 [data-dismiss="close"] {
-	background: center / contain no-repeat url(<%= asset_url('red-close.png') %>);
 	display: inline-block;
 	height: 16px;
 	text-indent: 10000px;
@@ -85,6 +85,14 @@ html {
 	position: absolute;
 	right: 10px;
 	z-index: 1;
+}
+
+.error > [data-dismiss="close"] {
+	background: center / contain no-repeat url(<%= asset_url('red-close.png') %>);
+}
+
+.success > [data-dismiss="close"] {
+	background: center / contain no-repeat url(<%= asset_url('green-close.png') %>);
 }
 
 // flash messages
@@ -868,6 +876,10 @@ label {
 
 	.lg-w-50 {
 		width: 50%;
+	}
+
+	.lg-w-35 {
+		width: 35%;
 	}
 
 	.lg-w-25 {

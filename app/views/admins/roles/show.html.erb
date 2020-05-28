@@ -11,39 +11,52 @@
     <h2 class="h3 secondary text-center mb-3">
       <%= format_name(@role.name) %> Role
     </h2>
-    <dl>
+    <dl class="generic d-inline-block mb-1">
       <dt>Name</dt>
       <dd class="mb-1"><%= format_name(@role.name) %></dd>
-      <dt>Deletable?</dt>
+    </dl>
+    <dl class="generic d-inline-block mb-1">
+      <dt>Deletable</dt>
       <dd class="mb-1"><%= @role.deletable %></dd>
+    </dl>
+    <dl class="generic d-inline-block mb-1">
+      <dt>Linked Users</dt>
+      <dd class="mb-1"><%= @role.users.count %></dd>
+    </dl>
+    <dl class="generic mb-2">
       <dt>Description</dt>
       <dd class="mb-1"><%= @role.description %></dd>
     </dl>
     <%= link_to "Edit #{format_name(@role.name)}", edit_role_path(@role),
-      :class => "btn sm-w-100 lg-w-25 text-center mt-1" %>
-    <%= link_to "Delete #{format_name(@role.name)}", role_path(@role),
+      :class => "btn d-block text-center mt-1 lg-w-35 md-100" %>
+    <%= link_to "Cancel", :back,
+      :class => "btn d-block text-center mt-1 lg-w-35 md-100" %>
+    <%= link_to "Delete #{format_name(@role.name)} Role", role_path(@role),
       :method => :delete,
       :data => {
+        :remote => true,
         :confirm => 'Are you sure? This will also delete all linked records.'
       },
-      :class => "btn danger sm-w-100 lg-w-25 text-center mb-2 mt-1" %>
+      :class => "btn d-block danger sm-w-100 text-center mb-2 mt-1 lg-w-35 md-100" %>
   </section>
-  <section class="sm-w-90 md-w-60 m-center text-center">
-    <h3 class="secondary text-center mb-2">Linked Users</h3>
-    <% @role.users.each do |user| %>
-      <% person = UserDecorator.new(user) %>
-      <ol class="mb-1">
-        <li class="d-inline-block">Name:</li>
-        <li class="d-inline-block">
-          <%= link_to format(person.name), user_path(user) %>
-        </li>
-        <li class="d-inline-block ml-1">Email:</li>
-        <li class="d-inline-block"><%= person.email %></li>
-        <% if person.internal_employee? %>
-          <li class="d-inline-block ml-1">Position:</li>
-          <li class="d-inline-block"><%= person.position %></li>
-        <% end %>
-      </ol>
-    <% end %>
-  </section>
+  <% if @role.users.count != 0 %>
+    <section class="sm-w-90 md-w-60 m-center text-center">
+      <h3 class="secondary text-center mb-2">Linked Users</h3>
+      <% @role.users.each do |user| %>
+        <% person = UserDecorator.new(user) %>
+        <ol class="mb-1">
+          <li class="d-inline-block">Name:</li>
+          <li class="d-inline-block">
+            <%= link_to format(person.name), user_path(user) %>
+          </li>
+          <li class="d-inline-block ml-1">Email:</li>
+          <li class="d-inline-block"><%= person.email %></li>
+          <% if person.internal_employee? %>
+            <li class="d-inline-block ml-1">Position:</li>
+            <li class="d-inline-block"><%= person.position %></li>
+          <% end %>
+        </ol>
+      <% end %>
+    </section>
+  <% end %>
 </main>

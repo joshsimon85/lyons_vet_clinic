@@ -48,6 +48,7 @@
       <%= link_to "Delete #{format_name(@role.name)}", role_path(@role),
             :method => :delete,
             :data => {
+              :remote => true,
               :confirm => 'Are you sure? This will also delete all linked records.'
             },
             :class => "btn danger sm-w-100 md-w-25 text-center mb-2 mt-1" %>

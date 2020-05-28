@@ -67,16 +67,21 @@ class Admins::RolesController < ApplicationController
 
   def destroy
     @role = Role.find_by(:slug => params[:id])
-    name = format_name(@role.name)
+    @name = format_name(@role.name)
 
-    if @role && @role.deletable
-      @role.destroy
+    respond_to do |format|
+      if @role && @role.deletable
+        @role.destroy
+        flash[:success] = "#{@name} has been successfully deleted."
 
-      flash[:success] = "#{name} has been successfully deleted."
-      redirect_to roles_path
-    else
-      flash.now[:error] = "#{name} has it's deletable property set to false, therefore it can't be deleted."
-      render :edit
+        format.html { redirect_to roles_path }
+        format.js
+      else
+        flash.now[:error] = "#{@name} has it's deletable property set to false, therefore it can't be deleted."
+
+        format.html { render :edit }
+        format.js
+      end
     end
   end
 
