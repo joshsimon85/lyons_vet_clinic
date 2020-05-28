@@ -2,4 +2,5 @@
 <% content_for :active, 'dashboard' %>
 
 <h4>Welcome <%= @user.full_name %></h4>
-<%= link_to 'Roles', roles_path %>
+<%= link_to 'Roles', roles_path, :class => "d-block" %>
+<%= link_to 'Positions', positions_path, :class => "d-block" %>
