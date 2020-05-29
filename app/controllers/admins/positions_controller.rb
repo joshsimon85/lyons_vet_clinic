@@ -9,4 +9,8 @@ class Admins::PositionsController < ApplicationController
     @positions = Position.all
     @position = Position.new
   end
+
+  def new
+    @position = Position.new
+  end
 end

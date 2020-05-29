@@ -1,0 +1,41 @@
+<% content_for :title, 'New Position' %>
+
+<% content_for :active, 'positions' %>
+
+<% content_for :javascripts do %>
+  <%= javascript_pack_tag 'admins/main' %>
+  <%= javascript_pack_tag 'admins/positions_new' %>
+<% end %>
+
+<main class="mt-3">
+  <section class="form-container sm-w-95 md-w-90 lg-w-70 m-center">
+    <h2 class="h3 secondary text-center mt-3 mb-3">Create A New Position</h2>
+    <%= render partial: 'shared/errors', :locals =>
+                                          { :obj => @position, :action => 'created' } %>
+    <%= form_for @position, :remote => true, :html => { :novalidate => "true" } do |f| %>
+      <dl class="mb-1">
+        <dt class="v-center">
+          <%= f.label :title do %>
+            Title <span>*</span>
+          <% end %>
+        </dt>
+        <dd class="mb-1">
+          <%= f.text_field :title, :class => 'd-inline-block lg-w-50', :required => true %>
+        </dd>
+        <dt class="v-center">
+          <%= f.label :description do %>
+            Description <span>*</span>
+          <% end %>
+        </dt>
+        <dd class="mb-1">
+          <%= f.text_area :description, :class => 'w-100', :required => true %>
+        </dd>
+        <dt></dt>
+        <dd>* Denotes a required field</dd>
+      </dl>
+
+      <%= f.submit 'Submit', :class => 'btn sm-w-100 md-w-25 mb-1' %>
+
+    <% end %>
+  </section>
+</main>
