@@ -11,7 +11,7 @@ user = Role.create({ :name => 'user',
                      :description => 'External customer',
                      :deletable => false })
 
-vet_tech = Position.create({ :title => 'Vet tech', :description => 'Vet tech'} )
+vet_tech = Position.create({ :name => 'Vet tech', :description => 'Vet tech'} )
 
 power_user = User.create({ :full_name => 'Jon Doe',
                            :email => 'jon@doe.com',
