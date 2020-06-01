@@ -19,8 +19,8 @@ User.create({ :full_name => 'Jon Doe',
                            :confirmed_at => Time.now,
                            :role =>  power_user })
 
-User.create({ :full_name => 'Admin Doe',
-                           :email => 'jon@doe.com',
+User.create({ :full_name => 'Admin User',
+                           :email => 'admin@user.com',
                            :password => 'password',
                            :confirmed_at => Time.now,
                            :role => admin,
