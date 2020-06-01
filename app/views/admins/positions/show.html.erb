@@ -34,7 +34,7 @@
     <div class="actions">
       <%= link_to "Edit #{format_name(@position.name)}", edit_position_path(@position),
         :class => "btn text-center mt-1 lg-w-35 md-w-100 sm-w-100" %>
-      <%= link_to "Cancel", :back,
+      <%= link_to "Back", :back,
         :class => "btn text-center mt-1 lg-w-35 md-w-100 sm-w-100" %>
       <%= link_to "Delete #{format_name(@position.name)}", position_path(@position),
         :method => :delete,

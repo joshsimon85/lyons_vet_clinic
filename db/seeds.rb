@@ -39,4 +39,4 @@ User.create({ :full_name => 'External User',
                      :email => 'user@user.com',
                      :password => 'password',
                      :confirmed_at => Time.now,
-                     :role_id => external_user })
+                     :role => external_user })
