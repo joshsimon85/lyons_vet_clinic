@@ -72,12 +72,12 @@ class Admins::RolesController < ApplicationController
     respond_to do |format|
       if @role && @role.deletable
         @role.destroy
-        flash[:success] = "#{@name} has been successfully deleted."
+        flash[:success] = "#{format_name(@role.name)} has been successfully deleted."
 
         format.html { redirect_to roles_path }
         format.js
       else
-        flash.now[:error] = "#{@name} has it's deletable property set to false, therefore it can't be deleted."
+        flash.now[:error] = "#{format_name(@role.name)} has it's deletable property set to false, therefore it can't be deleted."
 
         format.html { render :edit }
         format.js

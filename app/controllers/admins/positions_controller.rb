@@ -57,6 +57,18 @@ class Admins::PositionsController < ApplicationController
     end
   end
 
+  def destroy
+    @position = Position.find_by(:slug => params[:id])
+    
+    respond_to do |format|
+      @position.destroy
+      flash[:success] = "#{format_name(@position.name)} has been successfully deleted."
+
+      format.html { redirect_to positions_path }
+      format.js
+    end
+  end
+
   private
 
   def position_params

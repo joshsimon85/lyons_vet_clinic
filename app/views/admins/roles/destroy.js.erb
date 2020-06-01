@@ -1,12 +1,12 @@
 <% if flash[:error].present? %>
   document.querySelector('.flash-messages').innerHTML =
-    '<div class="error" data-dismissible="true"><%= @name %> has it\'s ' +
+    '<div class="error" data-dismissible="true"><%= format_name(@role.name) %> has it\'s ' +
     'deletable property set to false, therefore it can\'t be deleted.<a ' +
     'href="#" data-dismiss="close">close</a></div>';
 <% else %>
   window.location.href = "<%= roles_path %>"
 
   document.querySelector('.flash-messages').innerHTML =
-  '<div class="success" data-dismissible="true"><%= @name %> has been ' +
+  '<div class="success" data-dismissible="true"><%= format_name(@role.name) %> has been ' +
   'successfully deleted.<a href="#" data-dismiss="close">close</a></div>';
 <% end %>

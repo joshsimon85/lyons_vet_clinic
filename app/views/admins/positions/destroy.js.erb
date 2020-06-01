@@ -1,0 +1,5 @@
+window.location.href = "<%= positions_path %>"
+
+document.querySelector('.flash-messages').innerHTML =
+'<div class="success" data-dismissible="true"><%= format_name(@position.name) %> has been ' +
+'successfully deleted.<a href="#" data-dismiss="close">close</a></div>';
