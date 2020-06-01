@@ -34,9 +34,13 @@ class Admins::PositionsController < ApplicationController
     end
   end
 
+  def show
+    @position = Position.find_by(:slug => params[:id])
+  end
+
   private
 
   def position_params
-    params.require(:position).permit(:title, :description)
+    params.require(:position).permit(:name, :description)
   end
 end

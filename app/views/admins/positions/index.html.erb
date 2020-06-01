@@ -24,7 +24,7 @@
         <% @positions.each do |position| %>
           <tr>
             <td>
-              <%= link_to "#{position.title}", position_path(position) %>
+              <%= link_to "#{position.name}", position_path(position) %>
             </td>
             <td><%= position.description %></td>
             <td><%= pluralize(position.users.count, 'user') %></td>
@@ -51,12 +51,12 @@
                                             } %>
       <dl class="mb-1">
         <dt class="v-center">
-          <%= f.label :title do %>
-            Title <span>*</span>
+          <%= f.label :name do %>
+            Name <span>*</span>
           <% end %>
         </dt>
         <dd class="mb-1">
-          <%= f.text_field :title, :class => 'd-inline-block lg-w-50',
+          <%= f.text_field :name, :class => 'd-inline-block lg-w-50',
                            :required => true %>
         </dd>
         <dt class="v-center">

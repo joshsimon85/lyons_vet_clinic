@@ -46,7 +46,7 @@ RSpec.describe Admins::PositionsController do
         before do
           post :create, :params => {
             :position => {
-              :title => 'testing',
+              :name => 'testing',
               :description => 'testing description'
             }
           }
