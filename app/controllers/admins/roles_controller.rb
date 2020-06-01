@@ -47,7 +47,7 @@ class Admins::RolesController < ApplicationController
     @role.update(role_params)
 
     respond_to do |format|
-      if @role.save
+      if @role.valid?
         flash[:success] = "#{format_name(@role.name)} role has been updated."
 
         format.html {

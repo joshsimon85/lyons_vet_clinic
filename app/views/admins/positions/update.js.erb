@@ -1,0 +1,13 @@
+<% if flash[:error].present? %>
+  document.querySelector('.flash-messages').innerHTML =
+    '<div class="error" data-dismissible="true">There was an error updating the' +
+    ' position. <a href="#" data-dismiss="close">close</a></div>';
+
+  document.querySelector('section.error').innerHTML = ("<%= j render(:partial =>
+    'shared/errors', :locals => { :obj => @position, :action => 'updated' }) %>");
+<% else %>
+  window.location.href = "<%= positions_path %>"
+  document.querySelector('.flash-messages').innerHTML =
+  '<div class="success" data-dismissible="true">The position has been ' +
+  'successfully updated. <a href="#" data-dismiss="close">close</a></div>';
+<% end %>

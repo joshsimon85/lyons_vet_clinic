@@ -3,7 +3,7 @@
     'shared/errors', :locals => { :obj => @role, :action => 'updated' }) %>");
 
   document.querySelector('.flash-messages').innerHTML =
-    '<div class="error" data-dismissible="true">There was a problem updating the <%= format_name(@role.name) %> role. <a href="#" data-dismiss="close">close</a></div>';
+    '<div class="error" data-dismissible="true">There was an error updating the <%= format_name(@role.name) %> role. <a href="#" data-dismiss="close">close</a></div>';
 <% else %>
   window.location.href = "<%= roles_path %>"
   document.querySelector('.flash-messages').innerHTML =

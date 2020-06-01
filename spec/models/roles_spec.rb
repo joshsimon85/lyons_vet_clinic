@@ -34,4 +34,36 @@ RSpec.describe Role do
       expect(role.slug).to eq('power-user')
     end
   end
+
+  describe '#mandatory?' do
+    it 'returns false when role name is power user' do
+      role = create(:role, :name => 'power user')
+
+      expect(role.mandatory?).to be(true)
+    end
+
+    it 'returns false when role name is admin' do
+      role = create(:role, :name => 'admin')
+
+      expect(role.mandatory?).to be(true)
+    end
+
+    it 'returns false when role name is employee' do
+      role = create(:role, :name => 'employee')
+
+      expect(role.mandatory?).to be(true)
+    end
+
+    it 'returns false when role name is admin case insensitive' do
+      role = create(:role, :name => 'AdmiN')
+
+      expect(role.mandatory?).to be(true)
+    end
+
+    it 'returns true when role is not admin/power user/employee' do
+      role = create(:role, :name => 'tech')
+
+      expect(role.mandatory?).to be(false)
+    end
+  end
 end

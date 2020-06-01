@@ -57,19 +57,34 @@ describe 'CRUD role actions' do
     expect(page).to have_content('prevented your role from being created')
   end
 
-  scenario 'updating a role with invalid feilds', :js => true do
-    create_role!
+  scenario 'updating a role with invalid fields', :js => true do
+    create(:role, :name => 'user')
 
     visit roles_path
 
-    click_link 'admin'
-    click_link 'Edit Admin'
+    click_link 'user'
+    click_link 'Edit User'
     fill_in 'Name', :with => ''
-    click_button 'Submit'
+    click_button 'Update'
 
     expect(page).to have_selector('.error')
-    expect(page).to have_content('There was a problem updating ')
+    expect(page).to have_content('There was an error updating ')
     expect(page).to have_content('prevented your role from being updated')
     expect(page).to have_content("Name can't be blank")
+  end
+
+  scenario 'updating a role with valid fields' do
+    create(:role, :name => 'user')
+
+    visit roles_path
+
+    click_link 'user'
+    click_link 'Edit User'
+    fill_in 'Name', :with => 'User 2'
+    click_button 'Update'
+
+    expect(page).to have_selector('.success')
+    expect(page).to have_content('User 2 role ')
+    expect(page).to have_link('User 2')
   end
 end

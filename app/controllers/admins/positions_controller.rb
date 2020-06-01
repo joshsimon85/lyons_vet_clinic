@@ -20,9 +20,7 @@ class Admins::PositionsController < ApplicationController
     respond_to do |format|
       if @position.valid?
         flash[:success] = 'The position has been successfully created.'
-        format.html {
-          redirect_to positions_path
-        }
+        format.html { redirect_to positions_path }
         format.js
       else
         flash.now[:error] = 'There was an error creating the position.'
@@ -36,6 +34,27 @@ class Admins::PositionsController < ApplicationController
 
   def show
     @position = Position.find_by(:slug => params[:id])
+  end
+
+  def edit
+    @position = Position.find_by(:slug => params[:id])
+  end
+
+  def update
+    @position = Position.find_by(:slug => params[:id])
+    @position.update(position_params)
+
+    respond_to do |format|
+      if @position.valid?
+        flash[:success] = "#{@position.name} has been successfully updated."
+        format.html { redirect_to positions_path }
+        format.js
+      else
+        flash[:error] = 'There was an error updating the position.'
+        format.html { render :edit }
+        format.js
+      end
+    end
   end
 
   private

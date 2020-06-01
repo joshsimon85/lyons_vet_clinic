@@ -9,7 +9,7 @@ class Position < ApplicationRecord
   def to_param
     name.downcase.parameterize
   end
-  
+
   private
 
   def set_slug

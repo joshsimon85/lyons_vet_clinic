@@ -13,6 +13,10 @@ class Role < ApplicationRecord
     name.downcase.parameterize
   end
 
+  def mandatory?
+    ['power user', 'admin', 'employee'].include?(name.downcase)
+  end
+
   private
 
   def set_slug
