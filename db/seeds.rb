@@ -7,19 +7,19 @@ admin = Role.create({ :name => 'admin',
 employee = Role.create({ :name => 'employee',
                          :description => 'Internal employee',
                          :deletable => false })
-user = Role.create({ :name => 'user',
+external_user = Role.create({ :name => 'user',
                      :description => 'External customer',
                      :deletable => false })
 
 vet_tech = Position.create({ :name => 'Vet tech', :description => 'Vet tech'} )
 
-power_user = User.create({ :full_name => 'Jon Doe',
+User.create({ :full_name => 'Jon Doe',
                            :email => 'jon@doe.com',
                            :password => 'password',
                            :confirmed_at => Time.now,
-                           :role => power_user })
+                           :role =>  power_user })
 
-admin = User.create({ :full_name => 'Jon Doe',
+User.create({ :full_name => 'Admin Doe',
                            :email => 'jon@doe.com',
                            :password => 'password',
                            :confirmed_at => Time.now,
@@ -27,7 +27,7 @@ admin = User.create({ :full_name => 'Jon Doe',
                            :position => vet_tech,
                            :description => 'Fun person' })
 
-employee = User.create({ :full_name => 'Jane Doe',
+User.create({ :full_name => 'Jane Doe',
                          :email => 'jane@doe.com',
                          :password => 'password',
                          :confirmed_at => Time.now,
@@ -35,8 +35,8 @@ employee = User.create({ :full_name => 'Jane Doe',
                          :position => vet_tech,
                          :description => 'Fun employee' })
 
-user = User.create({ :full_name => 'External User',
+User.create({ :full_name => 'External User',
                      :email => 'user@user.com',
                      :password => 'password',
                      :confirmed_at => Time.now,
-                     :role => user })
+                     :role_id => external_user })
