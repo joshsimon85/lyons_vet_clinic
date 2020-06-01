@@ -55,18 +55,24 @@
             Title <span>*</span>
           <% end %>
         </dt>
-        <dd class="mb-1"><%= f.text_field :title, :class => 'd-inline-block lg-w-50', :required => true %></dd>
+        <dd class="mb-1">
+          <%= f.text_field :title, :class => 'd-inline-block lg-w-50',
+                           :required => true %>
+        </dd>
         <dt class="v-center">
           <%= f.label :description do %>
             Description <span>*</span>
           <% end %>
         </dt>
-        <dd class="mb-1"><%= f.text_area :description, :class => 'w-100', :required => true %></dd>
+        <dd class="mb-1">
+          <%= f.text_area :description, :class => 'w-100',
+                          :required => true %>
+        </dd>
         <dt></dt>
         <dd>* Denotes a required field</dd>
       </dl>
 
-      <%= f.submit 'Submit', :class => 'btn sm-w-100 md-w-25 mb-1' %>
+      <%= f.submit 'Submit', :class => 'btn sm-w-100 md-w-25 mb-3' %>
 
     <% end %>
   </section>
