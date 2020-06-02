@@ -55,13 +55,13 @@
       <% @role.users.each do |user| %>
         <% person = UserDecorator.new(user) %>
         <div>
-          <dl class="generic d-inline-block mb-1 sm-w-100 md-w-25">
+          <dl class="generic d-inline-block sm-w-100 md-w-25">
             <dt>Name:</dt>
             <dd>
               <%= link_to format(person.name), user_path(user) %>
             </dd>
           </dl>
-          <dl class="generic d-inline-block mb-1 sm-w-100 md-w-25">
+          <dl class="generic d-inline-block sm-w-100 md-w-25">
             <dt>Email:</dt>
             <dd><%= person.email %></dd>
           </dl>
