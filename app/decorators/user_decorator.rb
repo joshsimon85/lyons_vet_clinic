@@ -12,23 +12,27 @@ class UserDecorator
   end
 
   def internal_employee?
-    user.position
+    !!user.position_id
   end
 
-  def position
-    user.position.description
-  end
-
-  def position_name
-    if user.position
-      user.position.name
+  def position_description
+    if internal_employee?
+      user.position.description.capitalize.strip
     else
       ''
     end
   end
 
-  def role_name
-    user.role.name
+  def title
+    if internal_employee?
+      format_name(user.position.name)
+    else
+      ''
+    end
+  end
+
+  def role
+    format_name(user.role.name)
   end
 
   def email
@@ -37,7 +41,7 @@ class UserDecorator
 
   def about
     if user.description.present?
-      user.description
+      user.description.strip.capitalize
     else
       ''
     end
