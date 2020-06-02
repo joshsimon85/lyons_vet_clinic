@@ -25,9 +25,9 @@
         <% @roles.each do |role| %>
           <tr>
             <td>
-              <%= link_to "#{role.name}", role_path(role) %>
+              <%= link_to "#{format_name(role.name)}", role_path(role) %>
             </td>
-            <td><%= role.description %></td>
+            <td><%= format_string(role.description) %></td>
             <td><%= role.deletable %></td>
             <td><%= pluralize(role.users.count, 'user') %></td>
           </tr>

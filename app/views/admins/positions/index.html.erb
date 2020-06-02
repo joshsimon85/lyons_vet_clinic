@@ -24,9 +24,9 @@
         <% @positions.each do |position| %>
           <tr>
             <td>
-              <%= link_to "#{position.name}", position_path(position) %>
+              <%= link_to "#{format_name(position.name)}", position_path(position) %>
             </td>
-            <td><%= position.description %></td>
+            <td><%= format_string(position.description) %></td>
             <td><%= pluralize(position.users.count, 'user') %></td>
           </tr>
         <% end %>

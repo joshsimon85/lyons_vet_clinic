@@ -44,7 +44,7 @@ RSpec.describe UserDecorator do
 
   describe '#position_description' do
     it 'returns a capitalized version of the description of the users position' do
-      expect(jon.position_description).to eq(position.description.capitalize.strip)
+      expect(jon.position_description).to eq(format_string(position.description))
     end
 
     it 'returns an empty string when the user has no position' do
@@ -76,7 +76,7 @@ RSpec.describe UserDecorator do
 
   describe '#about' do
     it 'returns the users description capitalized and stripped of white space' do
-      expect(jon.about).to eq(power_user.description.capitalize.strip)
+      expect(jon.about).to eq(format_string(power_user.description))
     end
 
     it 'returns an empty string if the user does not have a description' do
@@ -96,5 +96,9 @@ RSpec.describe UserDecorator do
 
   def format(str)
     str.split.map { |str| str.capitalize.strip }.join(' ')
+  end
+
+  def format_string(str)
+    str.strip[0].capitalize + str.strip[1..-1]
   end
 end

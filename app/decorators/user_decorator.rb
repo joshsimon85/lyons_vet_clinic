@@ -17,7 +17,7 @@ class UserDecorator
 
   def position_description
     if internal_employee?
-      user.position.description.capitalize.strip
+      format_string(user.position.description)
     else
       ''
     end
@@ -41,7 +41,7 @@ class UserDecorator
 
   def about
     if user.description.present?
-      user.description.strip.capitalize
+      format_string(user.description)
     else
       ''
     end

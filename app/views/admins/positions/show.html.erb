@@ -28,7 +28,7 @@
     <aside>
       <dl class="generic mb-2">
         <dt>Description</dt>
-        <dd class="mb-1"><%= @position.description %></dd>
+        <dd class="mb-1"><%= format_string(@position.description) %></dd>
       </dl>
     </aside>
     <div class="actions">
@@ -48,23 +48,22 @@
   <% if @position.users.count != 0 %>
     <section class="linked-users sm-w-90 md-w-60 m-center mb-2 text-center">
       <h3 class="secondary text-center mb-2">Linked Users</h3>
-      <% @position.users.each do |user| %>
-        <% person = UserDecorator.new(user) %>
+      <% @position.users.map { |user| UserDecorator.new(user) }.each do |user| %>
         <div>
           <dl class="generic d-inline-block md-w-25 sm-w-100">
             <dt>Name:</dt>
             <dd>
-              <%= link_to format(person.name), user_path(user) %>
+              <%= link_to user.name, user_path(user.model) %>
             </dd>
           </dl>
           <dl class="generic d-inline-block md-w-25 sm-w-100">
             <dt>Email:</dt>
-            <dd><%= person.email %></dd>
+            <dd><%= user.email %></dd>
           </dl>
-          <% if person.internal_employee? %>
+          <% if user.internal_employee? %>
             <dl class="generic d-inline-block sm-w-100 md-w-25">
               <dt>Position:</dt>
-              <dd><%= person.position %></dd>
+              <dd><%= user.title %></dd>
             </dl>
           <% end %>
         </div>
