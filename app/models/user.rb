@@ -2,6 +2,8 @@ class User < ApplicationRecord
   belongs_to :role
   belongs_to :position, :optional => true
 
+  default_scope { order(full_name: "ASC") }
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, :confirmable, :lockable

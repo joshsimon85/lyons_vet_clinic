@@ -1,0 +1,35 @@
+<% content_for :title, 'Users' %>
+
+<% content_for :active, 'users' %>
+
+<% content_for :javascripts do %>
+  <%= javascript_pack_tag 'admins/main' %>
+<% end %>
+
+<main class="mt-3 sm-w-90 m-center">
+  <h2 class=" h3 secondary text-center mb-3">Roles</h2>
+
+  <table class="w-100 text-center mb-3">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Position</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to "#{user.name}", user_path(user.model) %>
+          </td>
+          <td><%= user.email %></td>
+          <td><%= user.role_name %></td>
+          <td><%= user.position_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'Create A New User', new_user_path, :class => 'btn sm-w-100 md-w-25 lg-w-15 text-center m-center' %>

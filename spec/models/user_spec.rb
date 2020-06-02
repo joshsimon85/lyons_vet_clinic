@@ -9,6 +9,17 @@ RSpec.describe User do
   it { should validate_presence_of(:password) }
   it { should validate_uniqueness_of(:email).case_insensitive }
 
+  describe 'default scope' do
+    it 'returns a list of user ordered by full name A-Z' do
+      user = create(:role, :name => 'user')
+      anna = create(:user, :role => role, :full_name => 'Anna Smith')
+      zach = create(:user, :role => role, :full_name => 'Zach Smith')
+      bob = create(:user, :role => role, :full_name => 'Bob Doe')
+
+      expect(User.all).to eq([anna, bob, zach])
+    end
+  end
+
   describe 'email format validations' do
     it 'raises an error with an email excluding @' do
       role = create(:role, :name => 'user')
