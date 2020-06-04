@@ -4,6 +4,8 @@ class Position < ApplicationRecord
   validates :name, :description, :presence => true
   validates :name, :uniqueness => { :case_sensitive => false }
 
+  default_scope { order(name: "ASC") }
+
   before_save :set_slug
 
   def to_param

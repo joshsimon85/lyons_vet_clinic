@@ -62,7 +62,7 @@ describe 'CRUD role actions' do
 
     visit roles_path
 
-    click_link 'user'
+    click_link 'User'
     click_link 'Edit User'
     fill_in 'Name', :with => ''
     click_button 'Update'
@@ -78,7 +78,7 @@ describe 'CRUD role actions' do
 
     visit roles_path
 
-    click_link 'user'
+    click_link 'User'
     click_link 'Edit User'
     fill_in 'Name', :with => 'User 2'
     click_button 'Update'

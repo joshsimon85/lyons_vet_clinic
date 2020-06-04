@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   belongs_to :role
   belongs_to :position, :optional => true
+  has_one :profile_image
 
   default_scope { order(full_name: "ASC") }
 
@@ -11,9 +12,11 @@ class User < ApplicationRecord
   validates :full_name, :password, :presence => true
   validates :email, :presence => true, :format => { :with => /\A.+@.+\z/,
     :message => 'must be properly formatted' }
+  validates :email, :uniqueness => { :case_sensitive => false }
   validates_with PositionIdValidator
   validates_with DescriptionValidator
-  validates :email, :uniqueness => { :case_sensitive => false }
+
+  #before_save :set_slug
 
   def admin?
     role.name.downcase == 'admin'
@@ -25,5 +28,11 @@ class User < ApplicationRecord
 
   def privileged_user?
     admin? || power_user?
+  end
+
+  private
+
+  def set_slug
+    self.slug = email.downcase.parameterize
   end
 end

@@ -62,7 +62,7 @@ describe 'CRUD role actions' do
 
     visit positions_path
 
-    click_link 'vet tech'
+    click_link 'Vet Tech'
     click_link 'Edit Vet Tech'
     fill_in 'Name', :with => ''
     click_button 'Update'
@@ -78,13 +78,13 @@ describe 'CRUD role actions' do
 
     visit positions_path
 
-    click_link 'vet tech'
+    click_link 'Vet Tech'
     click_link 'Edit Vet Tech'
     fill_in 'Name', :with => 'vet'
     click_button 'Update'
 
     expect(page).to have_selector('.success')
     expect(page).to have_content('vet has been ')
-    expect(page).to have_link('vet')
+    expect(page).to have_link('Vet')
   end
 end

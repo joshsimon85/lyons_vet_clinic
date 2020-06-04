@@ -8,4 +8,10 @@ RSpec.describe Admins::UsersController do
       let(:action) { get :index }
     end
   end
+
+  describe 'GET new' do
+    it_behaves_like 'requires privileged user' do
+      let(:action) { get :new }
+    end
+  end
 end

@@ -8,6 +8,30 @@ RSpec.describe Role do
   it { should validate_uniqueness_of(:name).case_insensitive }
   it { should validate_presence_of(:description) }
 
+  it 'returns a the records in alphabetical order A-Z based on name' do
+    employee = create(:role, :name => 'employee')
+    power_user = create(:role, :name => 'power user')
+    admin = create(:role, :name => 'admin')
+
+    expect(Role.all).to eq([admin, employee, power_user])
+  end
+
+  it 'sets a slug when a role is created' do
+    create(:position, :name => 'power user')
+
+    expect(Position.first.slug).to be_present
+    expect(Position.first.slug).to eq('power user'.parameterize)
+  end
+
+  it 'updates the slug name when a position name is updated' do
+    create(:position, :name => 'admin')
+
+    slug = Position.find_by(:name => 'admin').slug
+    Position.find_by(:name => 'admin').update(:name => 'power user')
+
+    expect(Position.find_by(:name => 'power user').slug).not_to eq(slug)
+  end
+
   describe 'validates deletable attribute' do
     it 'is valid with a false value' do
       role = build(:role, :deletable => false)

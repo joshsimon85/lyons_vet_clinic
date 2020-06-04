@@ -7,6 +7,8 @@ class Role < ApplicationRecord
   validates :deletable, :inclusion => { :in => [ true, false],
                                         :message => 'requires true or false' }
 
+  default_scope { order(name: "ASC") }
+  
   before_save :set_slug
 
   def to_param
