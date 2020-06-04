@@ -16,7 +16,7 @@ class User < ApplicationRecord
   validates_with PositionIdValidator
   validates_with DescriptionValidator
 
-  #before_save :set_slug
+  before_save :set_slug
 
   def admin?
     role.name.downcase == 'admin'
@@ -30,9 +30,13 @@ class User < ApplicationRecord
     admin? || power_user?
   end
 
+  def to_param
+    full_name.downcase.parameterize
+  end
+
   private
 
   def set_slug
-    self.slug = email.downcase.parameterize
+    self.slug = full_name.downcase.parameterize
   end
 end
