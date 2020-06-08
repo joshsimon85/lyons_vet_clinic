@@ -20,6 +20,27 @@ class Admins::UsersController < ApplicationController
   end
 
   def create
-    binding.pry
+    @password = SecureRandom.hex(8)
+    @user = User.create(user_params.merge(:password => @password))
+
+    respond_to do |format|
+      # need to send email with confirmation token and password
+      if @user.valid?
+        #flash[:success] = 'The user has been successfully created.'
+        format.html {
+
+        }
+      else
+        flash.now[:error] = 'There was a problem creating the user.'
+        format.html { }
+      end
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:full_name, :email, :description, :role_id,
+                                 :position_id, :profile_image)
   end
 end

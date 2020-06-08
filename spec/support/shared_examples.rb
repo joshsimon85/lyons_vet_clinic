@@ -18,7 +18,7 @@ end
 
 shared_examples 'requires admin' do
   it 'redirects to the root path' do
-    sign_in(create_user!)
+    sign_in(create_admin!)
     action
     expect(response).to redirect_to root_path
     expect(flash[:alert]).to be_present

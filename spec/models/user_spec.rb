@@ -52,7 +52,8 @@ RSpec.describe User do
     it 'has a role id assigned' do
       role =  create(:role, :name => 'admin')
       position =  create(:position)
-      admin = create(:user, :role => role, :position => position)
+      admin = create(:user, :with_profile_image, :role => role,
+                     :position => position)
 
       expect(User.first.role_id).to eq(role.id)
     end
@@ -62,7 +63,8 @@ RSpec.describe User do
     context 'role is admin' do
       let(:role) { create(:role, :name => 'admin') }
       let(:position) { create(:position) }
-      let!(:admin) { create(:user, :role => role, :position => position) }
+      let!(:admin) { create(:user, :with_profile_image, :role => role,
+                            :position => position) }
 
       it 'requires a position id to be valid' do
         expect(User.count).to eq(1)
@@ -98,7 +100,8 @@ RSpec.describe User do
     context 'role is employee' do
       let(:role) { create(:role, :name => 'employee') }
       let(:position) { create(:position) }
-      let!(:employee) { create(:user, :role => role, :position => position) }
+      let!(:employee) { create(:user, :with_profile_image, :role => role,
+                               :position => position) }
 
       it 'has belongs to a position' do
         expect(User.first.position_id).to eq(position.id)
@@ -130,7 +133,8 @@ RSpec.describe User do
         it 'creates the record when role is AdMin' do
           role = create(:role, :name => 'AdMin')
           position = create(:position)
-          admin = create(:user, { :role => role, :position => position })
+          admin = create(:user, :with_profile_image, :role => role,
+                         :position => position)
 
           expect(User.count).to eq(1)
           expect(User.first.full_name).to eq(admin.full_name)
@@ -139,7 +143,8 @@ RSpec.describe User do
         it 'creates the record when role is emPloyEE' do
           role = create(:role, :name => 'emPloyEE')
           position = create(:position)
-          admin = create(:user, { :role => role, :position => position })
+          admin = create(:user, :with_profile_image, :role => role,
+                         :position => position)
 
           expect(User.count).to eq(1)
           expect(User.first.full_name).to eq(admin.full_name)
@@ -166,7 +171,8 @@ RSpec.describe User do
     it 'returns true when the user is an admin' do
       role = create(:role, :name => 'admin')
       position = create(:position)
-      jon = create(:user, { :role => role, :position => position })
+      jon = create(:user, :with_profile_image, :role => role,
+                   :position => position)
 
       expect(jon.admin?).to eq(true)
     end
@@ -174,7 +180,8 @@ RSpec.describe User do
     it 'returns true when the user is an admin case insensitive' do
       role = create(:role, :name => 'aDMin')
       position = create(:position)
-      jon = create(:user, { :role => role, :position => position })
+      jon = create(:user, :with_profile_image, :role => role,
+                   :position => position)
 
       expect(jon.admin?).to eq(true)
     end
@@ -200,7 +207,8 @@ RSpec.describe User do
     it 'returns true when the user is an power user' do
       role = create(:role, :name => 'power user')
       position = create(:position)
-      jon = create(:user, { :role => role, :position => position })
+      jon = create(:user, :with_profile_image, :role => role,
+                   :position => position)
 
       expect(jon.power_user?).to eq(true)
     end
@@ -208,7 +216,8 @@ RSpec.describe User do
     it 'returns true when the user is a power user case insensitive' do
       role = create(:role, :name => 'powEr UseR')
       position = create(:position)
-      jon = create(:user, { :role => role, :position => position })
+      jon = create(:user, :with_profile_image, :role => role,
+                   :position => position)
 
       expect(jon.power_user?).to eq(true)
     end
@@ -216,7 +225,8 @@ RSpec.describe User do
     it 'returns false when the user is an admin' do
       role = create(:role, :name => 'admin')
       position = create(:position)
-      jon = create(:user, { :role => role, :position => position })
+      jon = create(:user, :with_profile_image, :role => role,
+                   :position => position)
 
       expect(jon.power_user?).to eq(false)
     end
@@ -234,7 +244,8 @@ RSpec.describe User do
     it 'returns false when the user is role name is user' do
       role = create(:role, :name => 'user')
       position = create(:position)
-      jon = create(:user, { :role => role, :position => position })
+      jon = create(:user, :with_profile_image, :role => role,
+                   :position => position)
 
       expect(jon.privileged_user?).to eq(false)
     end
@@ -242,7 +253,8 @@ RSpec.describe User do
     it 'returns true when the user is an admin' do
       role = create(:role, :name => 'admin')
       position = create(:position)
-      jon = create(:user, { :role => role, :position => position })
+      jon = create(:user, :with_profile_image, :role => role,
+                   :position => position)
 
       expect(jon.privileged_user?).to eq(true)
     end
@@ -258,7 +270,8 @@ RSpec.describe User do
     it 'returns true when the user is an admin case insensitive' do
       role = create(:role, :name => 'aDMin')
       position = create(:position)
-      jon = create(:user, { :role => role, :position => position })
+      jon = create(:user, :with_profile_image, :role => role,
+                   :position => position)
 
       expect(jon.privileged_user?).to eq(true)
     end

@@ -1,23 +1,32 @@
 module Helpers
+  def image_file_path
+    Rails.root.join('spec', 'support', 'assets', 'test_image.jpeg')
+  end
+
   def create_admin!
     role = create(:role, :name => 'admin')
     position = create(:position)
 
-    create(:user, { :role => role, :position => position })
+    create(:user, {
+      :role => role, :position => position,
+      :profile_image => fixture_file_upload(image_file_path)
+    })
   end
 
   def create_power_user!
     role = create(:role, :name => 'power user')
     position = create(:position)
 
-    create(:user, { :role => role, :position => position })
+    create(:user,
+      { :role => role, :position => position })
   end
 
   def create_employee!
     role = create(:role, :name => 'employee')
     position = create(:position)
 
-    create(:user, { :role => role, :position => position })
+    create(:user, { :role => role, :position => position,
+           :profile_image => fixture_file_upload(image_file_path) })
   end
 
   def create_user!

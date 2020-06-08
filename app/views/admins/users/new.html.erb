@@ -31,21 +31,21 @@
           <%= f.email_field :email, :class => 'd-inline-block lg-w-50', :required => true %>
         </dd>
         <dt class="v-center">
-          <%= f.label :role  do %>
+          <%= f.label :role_id  do %>
             Role <span>*</span>
           <% end %>
         </dt>
         <dd class="mb-1">
-          <%= select_tag :role, options_for_select(@roles,
+          <%= select_tag "user[role_id]", options_for_select(@roles,
                          :selected => ['Employee', @selected_role_id]) %>
         </dd>
         <dt class="v-center">
-          <%= f.label :position do %>
+          <%= f.label :position_id do %>
             Position <span>*</span>
           <% end %>
         </dt>
         <dd class="mb-1">
-          <%= select_tag :position, options_for_select(@positions,
+          <%= select_tag "user[position_id]", options_for_select(@positions,
                          :selected => ['None', nil]) %>
         </dd>
         <dt class="v-center">

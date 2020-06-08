@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   belongs_to :role
   belongs_to :position, :optional => true
-  has_one :profile_image
+  has_one_attached :profile_image
 
   default_scope { order(full_name: "ASC") }
 
@@ -15,6 +15,7 @@ class User < ApplicationRecord
   validates :email, :uniqueness => { :case_sensitive => false }
   validates_with PositionIdValidator
   validates_with DescriptionValidator
+  validates_with ImageValidator
 
   before_save :set_slug
 

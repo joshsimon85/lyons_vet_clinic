@@ -24,9 +24,7 @@ class Admins::PositionsController < ApplicationController
         format.js
       else
         flash.now[:error] = 'There was an error creating the position.'
-        format.html {
-          render :new
-        }
+        format.html { render :new }
         format.js
       end
     end
@@ -59,7 +57,7 @@ class Admins::PositionsController < ApplicationController
 
   def destroy
     @position = Position.find_by(:slug => params[:id])
-    
+
     respond_to do |format|
       @position.destroy
       flash[:success] = "#{format_name(@position.name)} has been successfully deleted."

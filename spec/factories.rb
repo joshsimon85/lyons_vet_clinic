@@ -13,6 +13,11 @@ FactoryBot.define do
     confirmed_at { Time.now }
     role_id { nil }
     position_id { nil }
+    profile_image { nil }
+
+    trait :with_profile_image do
+      profile_image { fixture_file_upload(image_file_path) }
+    end
   end
 
   factory :position do
