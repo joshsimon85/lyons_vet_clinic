@@ -8,7 +8,7 @@ describe 'CRUD user actions' do
     create(:role, :name => 'user')
     create(:role, :name => 'employee')
     create(:position, :name => 'Vet Tech')
-    clear_emails
+
     sign_in(jon)
   end
 

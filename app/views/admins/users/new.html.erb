@@ -12,7 +12,7 @@
     <h2 class="h3 secondary text-center mt-3 mb-3">Create A New User</h2>
     <%= render partial: 'shared/errors', :locals =>
                                           { :obj => @user, :action => 'created' } %>
-    <%= form_for @user, :remote => false, :html => { :novalidate => "true" } do |f| %>
+    <%= form_for @user, :remote => true, :html => { :novalidate => "true" } do |f| %>
       <dl class="mb-1">
         <dt class="v-center">
           <%= f.label :full_name do %>
@@ -41,7 +41,7 @@
         </dd>
         <dt class="v-center">
           <%= f.label :position_id do %>
-            Position <span>*</span>
+            Position <span>**</span>
           <% end %>
         </dt>
         <dd class="mb-1">
@@ -50,15 +50,15 @@
         </dd>
         <dt class="v-center">
           <%= f.label :description do %>
-            Description <span>*</span>
+            Description <span>**</span>
           <% end %>
         </dt>
         <dd class="mb-1">
-          <%= f.text_area :description, :class => 'w-100', :required => true %>
+          <%= f.text_area :description, :class => 'w-100' %>
         </dd>
         <dt class="v-center">
           <%= f.label :profile_image do %>
-            Profile Image <span></span>
+            Profile Image <span>**</span>
           <% end %>
         </dt>
         <dd class="mb-1">
@@ -70,6 +70,7 @@
         </dd>
         <dt></dt>
         <dd>* Denotes a required field</dd>
+        <dd>** Denotes a required field for admins and employees</dd>
       </dl>
 
       <%= f.submit 'Submit', :class => 'btn sm-w-100 md-w-25 mb-1' %>

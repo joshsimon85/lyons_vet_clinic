@@ -4,7 +4,7 @@ module Admins
 
     before_action :require_privileged_user!
 
-    def index
+    def dashboard
       @user = current_user
     end
 

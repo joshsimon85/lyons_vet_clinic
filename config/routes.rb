@@ -19,8 +19,8 @@ Rails.application.routes.draw do
       resources :users
       resources :roles
       resources :positions
-      
-      get 'dashboard', to: 'admin#index'
+
+      get 'dashboard', to: 'admin#dashboard'
     end
   end
 

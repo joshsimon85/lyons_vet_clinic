@@ -8,6 +8,6 @@ class DescriptionValidator < EmployeeValidator
   private
 
   def description_invalid?(record)
-    record.description == nil
+    !record.description.present?
   end
 end
