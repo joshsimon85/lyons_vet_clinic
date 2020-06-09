@@ -1,0 +1,13 @@
+<% if flash[:error].present? %>
+  document.querySelector('.flash-messages').innerHTML =
+    '<div class="error" data-dismissible="true">There was an error creating the' +
+    ' user. <a href="#" data-dismiss="close">close</a></div>';
+
+  document.querySelector('section.error').innerHTML = ("<%= j render(:partial =>
+    'shared/errors', :locals => { :obj => @user, :action => 'created' }) %>");
+<% else %>
+  window.location.href = "<%= users_path %>"
+  document.querySelector('.flash-messages').innerHTML =
+  '<div class="success" data-dismissible="true">The user has been ' +
+  'successfully created. <a href="#" data-dismiss="close">close</a></div>';
+<% end %>
