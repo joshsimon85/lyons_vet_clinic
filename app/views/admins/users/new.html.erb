@@ -13,6 +13,10 @@
     <%= render partial: 'shared/errors', :locals =>
                                           { :obj => @user, :action => 'created' } %>
     <%= form_for @user, :remote => true, :html => { :novalidate => "true" } do |f| %>
+      <p class="bold mb-2">
+        Before adding a picture omptimize it at
+        <%= link_to 'Tinypng', 'http://tinypng.com', :target => '_blank' %>
+      </p>
       <dl class="mb-1">
         <dt class="v-center">
           <%= f.label :full_name do %>
@@ -37,7 +41,7 @@
         </dt>
         <dd class="mb-1">
           <%= select_tag "user[role_id]", options_for_select(@roles,
-                         :selected => ['Employee', @selected_role_id]) %>
+                         :selected => @selected_role) %>
         </dd>
         <dt class="v-center">
           <%= f.label :position_id do %>
@@ -46,7 +50,7 @@
         </dt>
         <dd class="mb-1">
           <%= select_tag "user[position_id]", options_for_select(@positions,
-                         :selected => ['None', nil]) %>
+                         :selected => @selected_position) %>
         </dd>
         <dt class="v-center">
           <%= f.label :description do %>

@@ -110,4 +110,19 @@ describe 'CRUD user actions' do
     expect(page).to have_selector('.success')
     expect(page).to have_content('The user has been successfully created.')
   end
+
+  scenario 'creating a valid employee user' do
+    visit new_user_path
+
+    fill_in 'Full Name', :with => 'Jon Employee'
+    fill_in 'Email', :with => 'jon@poweruser.com'
+    select 'Employee', :from => 'user_role_id'
+    select 'Vet Tech', :from => 'user_position_id'
+    fill_in 'Description', :with => 'Description'
+    attach_file 'Image', image_file_path
+    click_button 'Submit'
+
+    expect(page).to have_selector('.success')
+    expect(page).to have_content('The user has been successfully created.')
+  end
 end
