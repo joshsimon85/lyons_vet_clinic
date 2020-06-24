@@ -47,6 +47,10 @@ class UserDecorator
     end
   end
 
+  def image
+    user.profile_image
+  end
+
   def model
     user
   end

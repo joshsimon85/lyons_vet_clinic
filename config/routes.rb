@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users, path: '', controllers: { sessions: 'users/sessions' },
-    :skip => [:registrations]
+  devise_for :users, path: '',
+             controllers: {
+               confirmations: 'users/confirmations',
+               omniauth_callbacks: 'users/omniauth_callbacks',
+               passwords: 'users/passwords',
+               registrations: 'users/registrations',
+               sessions: 'users/sessions',
+               unlocks: 'users/unlocks'
+            }
+
 
   root 'static_pages#index'
 

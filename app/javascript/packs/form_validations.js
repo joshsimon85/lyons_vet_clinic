@@ -3,7 +3,7 @@ class FormValidator {
     this.formId = formId;
   }
   getForm() {
-    return document.getElementById(this.formId);
+    return document.getElementById(this.formId) || document.querySelector(this.formId);
   }
   resetLabels() {
     this.getForm().querySelectorAll('label').forEach(function(label, idx) {

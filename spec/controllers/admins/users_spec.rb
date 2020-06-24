@@ -53,4 +53,33 @@ RSpec.describe Admins::UsersController do
       end
     end
   end
+
+  describe 'GET show' do
+    it_behaves_like 'requires privileged user' do
+      let(:action) { get :show, params: { :id => jon.slug } }
+    end
+  end
+
+  describe 'GET edit' do
+    it_behaves_like 'requires privileged user' do
+      let(:action) { get :edit, params: { :id => jon.slug } }
+    end
+  end
+
+  describe 'DELETE destroy' do
+    it_behaves_like 'requires privileged user' do
+      let(:action) { delete :destroy, params: { :id => jon.slug } }
+    end
+
+    before do
+      sign_in(jon)
+      delete :destroy, params: {id: user.slug }
+    end
+
+    context 'with signed in priv user and non existing user' do
+      it 'sets the flash error message' do
+        expect(flash[:error]).to be_pesent
+      end
+    end
+  end
 end

@@ -1,7 +1,7 @@
 class ImagePreview {
   constructor(fileID) {
     this.fileInput = document.getElementById(fileID);
-    this.imagePreview = document.querySelector('.image-preview');
+    this.imagePreview = document.querySelector('.image-preview') || document.querySelector('')
   }
   readImage(e) {
     const reader = new FileReader();
@@ -15,7 +15,8 @@ class ImagePreview {
 
     reader.addEventListener('load', (e) => {
       self.imagePreview.src = e.target.result;
-      self.imagePreview.closest('.hidden').classList.remove('hidden');
+      self.imagePreview.closest('.hidden').classList.toggle('hidden', false);
+      document.querySelector('.preview-heading').classList.toggle('hidden', false);
     });
 
     reader.readAsDataURL(file)
